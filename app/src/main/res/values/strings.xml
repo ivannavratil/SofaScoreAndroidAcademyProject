@@ -3,4 +3,6 @@
     <string name="Search">Search</string>
     <string name="Favorites">Favorites</string>
     <string name="Settings">Settings</string>
+    <string name="Search_Pokemons">Search Pokemons</string>
+    <string name="Select_a_pokemon">Select a pokemon</string>
 </resources>
