@@ -94,6 +94,7 @@ class SettingsFragment : Fragment() {
                 }
 
                 Util.changeLanguage(languageShort, requireContext())
+                //TODO: fix
                 //restartApp()
             }
 

@@ -32,13 +32,9 @@ class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
         params: LoadParams<Int>,
         callback: LoadCallback<Int, PokemonNamePhoto>
     ) {
-        //TODO: fix params
         scope.launch {
             val response = apiService.getPagedPokemons(params.key)
             val body = response.body()!!
-
-            println("params.key = ${params.key}")
-
             callback.onResult(
                 body.results,
                 if (body.previous == null) null else params.key - 1
@@ -47,13 +43,9 @@ class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, PokemonNamePhoto>) {
-        //TODO: fix params
         scope.launch {
             val response = apiService.getPagedPokemons(params.key)
             val body = response.body()!!
-
-            println("params.key = ${params.key}")
-
             callback.onResult(
                 response.body()!!.results,
                 if (body.next == null) null else (params.key + 1)
