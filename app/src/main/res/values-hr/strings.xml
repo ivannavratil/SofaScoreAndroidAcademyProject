@@ -12,6 +12,8 @@
     <string name="Settings">Postavke</string>
     <string name="Search_Pokemons">Pretraži pokemone</string>
     <string name="Select_a_pokemon">Odaberi pokemona</string>
+    <string name="language_en">Engleski</string>
+    <string name="language_hr">Hrvatski</string>
 
 
 </resources>

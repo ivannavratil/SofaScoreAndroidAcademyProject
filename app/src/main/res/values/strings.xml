@@ -111,4 +111,10 @@
     <string name="title_activity_type_detail">TypeDetailActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="clear_my_favorites_list">Clear my favorites list</string>
+
+    <string name="language_en">English</string>
+    <string name="language_hr">Croatian</string>
+    <string name="language_en_short" translatable="false">en_US</string>
+    <string name="language_hr_short" translatable="false">hr</string>
 </resources>

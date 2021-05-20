@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        println("LOCALE JE "+Locale.getDefault().toString())
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
