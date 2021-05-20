@@ -7,7 +7,8 @@ import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import sofascore.pokedex.databinding.ActivityTypeDetailBinding
-import sofascore.pokedex.ui.activity.ui.type.SectionsPagerAdapter
+import sofascore.pokedex.ui.adapter.SectionsPagerAdapter
+
 
 class TypeDetailActivity : AppCompatActivity() {
 

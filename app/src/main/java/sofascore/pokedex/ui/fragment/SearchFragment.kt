@@ -30,8 +30,8 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.recyclerViewRecent.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewRecent.adapter = adapter
+        binding.recyclerViewFavorite.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewFavorite.adapter = adapter
 
         pagedPokemonsViewModel.pagingPokemonsList.observe(viewLifecycleOwner, {
             adapter.submitList(it)

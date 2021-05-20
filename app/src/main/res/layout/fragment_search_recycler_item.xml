@@ -7,57 +7,79 @@
     android:paddingStart="8dp"
     android:paddingTop="4dp"
     android:paddingEnd="8dp"
-    android:paddingBottom="4dp"
-    android:background="@drawable/rect_surface_1"
-    android:layout_marginBottom="4dp"
-    >
+    android:paddingBottom="4dp">
 
-    <ImageView
-        android:id="@+id/pokemon_photo"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:src="@color/tint_secondary"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/rect_surface_1"
+        android:id="@+id/item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/handler"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-       android:inputType="textCapSentences"
-        android:id="@+id/pokemon_name"
-        style="@style/Headline2DarkLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@id/pokemon_photo"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mewtwo" />
+        <ImageView
+            android:id="@+id/pokemon_photo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:src="@color/tint_secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/pokemon_num"
-        style="@style/Headline3ColdGrayLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/pokemon_name"
-        app:layout_constraintTop_toBottomOf="@id/pokemon_name"
-        app:layout_goneMarginStart="20dp"
-        app:layout_goneMarginTop="4dp"
-        tools:text="150" />
+        <TextView
+            android:id="@+id/pokemon_name"
+            style="@style/Headline2DarkLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:inputType="textCapSentences"
+            app:layout_constraintStart_toEndOf="@id/pokemon_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mewtwo" />
+
+        <TextView
+            android:id="@+id/pokemon_num"
+            style="@style/Headline3ColdGrayLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/pokemon_name"
+            app:layout_constraintTop_toBottomOf="@id/pokemon_name"
+            app:layout_goneMarginStart="20dp"
+            app:layout_goneMarginTop="4dp"
+            tools:text="150" />
+
+        <ImageView
+            android:id="@+id/pokemon_fav"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_star_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pokemon_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/tint_secondary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/pokemon_fav"
+        android:id="@+id/handler"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_star_0"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_reorder"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pokemon_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/tint_secondary" />
+        app:layout_constraintStart_toEndOf="@id/item"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
