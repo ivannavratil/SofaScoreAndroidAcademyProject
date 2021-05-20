@@ -70,14 +70,14 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/swipe_refresh"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
-        <include
-            android:id="@+id/weather_included"
-            layout="@layout/weather_content_scrolling" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--        <include-->
+<!--            android:id="@+id/weather_included"-->
+<!--            layout="@layout/weather_content_scrolling" />-->
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
