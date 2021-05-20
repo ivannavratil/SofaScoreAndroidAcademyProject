@@ -1,8 +1,20 @@
 <resources>
-    <string name="app_name">Pokedex application</string>
+    <string name="app_name" translatable="false">Pokedex application</string>
     <string name="Search">Search</string>
     <string name="Favorites">Favorites</string>
     <string name="Settings">Settings</string>
     <string name="Search_Pokemons">Search Pokemons</string>
     <string name="Select_a_pokemon">Select a pokemon</string>
+
+    <string name="about_me">About me</string>
+    <string name="learn_more_about_me">Learn more about me</string>
+    <string name="more_info">more info</string>
+    <string name="app_author" translatable="false">Ivan Navratil</string>
+    <string name="app_name_value" translatable="false">Pokemon App</string>
+    <string name="app_name_key">App Name</string>
+    <string name="api_credit" translatable="false">API Credit</string>
+    <string name="api_credit_value" translatable="false">pokemons</string>
+    <string name="developer_key">Developer</string>
+    <string name="sofascore_android_academy">SofaScore Android Academy</string>
+    <string name="class_2021">Class 2021</string>
 </resources>

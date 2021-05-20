@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_me">O meni</string>
+    <string name="learn_more_about_me">Saznaj više o meni</string>
+    <string name="more_info">Više informacija</string>
+    <string name="app_name_key">Ime aplikacije</string>
+    <string name="developer_key">Developer</string>
+    <string name="sofascore_android_academy">SofaScore Android Akademija</string>
+    <string name="class_2021">Razred 2021</string>
+    <string name="Search">Pretraga</string>
+    <string name="Favorites">Favoriti</string>
+    <string name="Settings">Postavke</string>
+    <string name="Search_Pokemons">Pretraži pokemone</string>
+    <string name="Select_a_pokemon">Odaberi pokemona</string>
+
+
+</resources>
