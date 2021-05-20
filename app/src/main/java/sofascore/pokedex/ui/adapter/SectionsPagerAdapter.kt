@@ -1,10 +1,11 @@
-package sofascore.pokedex.ui.activity.ui.type
+package sofascore.pokedex.ui.adapter
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import sofascore.pokedex.R
+import sofascore.pokedex.ui.fragment.PlaceholderFragment
 
 
 private val TAB_TITLES = arrayOf(

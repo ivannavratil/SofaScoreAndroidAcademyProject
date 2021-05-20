@@ -1,6 +1,5 @@
 package sofascore.pokedex.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class AllPokemonsResponse(
@@ -10,6 +9,7 @@ data class AllPokemonsResponse(
     @SerializedName("results")
     val results: List<PokemonNamePhoto>
 )
+
 
 data class PokemonNamePhoto(
     val name: String, // bulbasaur

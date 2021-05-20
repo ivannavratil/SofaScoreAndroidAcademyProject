@@ -1,4 +1,4 @@
-package sofascore.pokedex.ui.activity.ui.type
+package sofascore.pokedex.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
