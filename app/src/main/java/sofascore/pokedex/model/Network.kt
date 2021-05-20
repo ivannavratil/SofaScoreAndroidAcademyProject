@@ -15,7 +15,7 @@ import java.time.ZonedDateTime
 
 class Network {
 
-    private val service: PokedexService
+    val service: PokedexService
     private val baseUrl = "https://pokeapi.co/api/v2/"
 
 

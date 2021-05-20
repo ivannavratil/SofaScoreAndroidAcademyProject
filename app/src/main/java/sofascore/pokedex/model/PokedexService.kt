@@ -7,7 +7,10 @@ import retrofit2.http.Query
 interface PokedexService {
 
     @GET("pokemon")
-    suspend fun getPokemons(@Query("offset") offset: Int, @Query("limit") limit: Int): Response<List<String>>
+    suspend fun getPagedPokemons(@Query("offset") offset: Int, @Query("limit") limit: Int): Response<AllPokemonsResponse>
+
+    @GET("pokemon")
+    suspend fun getPagedPokemons(@Query("offset") offset: Int): Response<AllPokemonsResponse>
 
 
 }
