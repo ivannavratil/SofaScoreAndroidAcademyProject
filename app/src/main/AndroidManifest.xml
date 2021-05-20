@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokedexApplication">
         <activity
+            android:name=".ui.activity.TypeDetailActivity"
+            android:label="@string/title_activity_type_detail"
+            android:theme="@style/Theme.PokedexApplication.NoActionBar"></activity>
+        <activity
             android:name=".ui.activity.DetailPokemonActivity"
             android:label="@string/title_activity_detail_pokemon"
             android:theme="@style/Theme.PokedexApplication.NoActionBar" />
