@@ -1,4 +1,4 @@
-package sofascore.pokedex.ui.activity.ui.main
+package sofascore.pokedex.ui.activity.ui.type
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import sofascore.pokedex.ui.activity.R
-import sofascore.pokedex.ui.activity.databinding.FragmentTypeDetailBinding
+import sofascore.pokedex.databinding.FragmentTypeDetailBinding
 
 /**
  * A placeholder fragment containing a simple view.
@@ -38,10 +37,7 @@ class PlaceholderFragment : Fragment() {
         _binding = FragmentTypeDetailBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.sectionLabel
-        pageViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 

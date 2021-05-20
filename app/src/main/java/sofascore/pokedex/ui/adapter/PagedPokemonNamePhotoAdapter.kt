@@ -4,29 +4,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.google.android.play.core.internal.bi
 import sofascore.pokedex.R
-import sofascore.pokedex.databinding.PokemonCardSearchBinding
+import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
 import sofascore.pokedex.model.PokemonNamePhoto
+import sofascore.pokedex.ui.adapter.PagedPokemonNamePhotoAdapter.*
+import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class PagedPokemonNamePhotoAdapter :
-    PagedListAdapter<PokemonNamePhoto, PagedPokemonNamePhotoAdapter.PokemonViewHolder>(PokemonPhotoDiffUtil()) {
+    PagedListAdapter<PokemonNamePhoto, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
+
+    companion object {
+        private val pattern: Pattern = Pattern.compile("/\\d+/")
+    }
 
     class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = PokemonCardSearchBinding.bind(view)
+        private val binding = FragmentSearchRecyclerItemBinding.bind(view)
 
         fun bindPokemons(pokemon: PokemonNamePhoto) {
-            binding.pokemonName.text = pokemon.name
-            binding.pokemonPhoto.load(pokemon.url)
+            binding.pokemonName.text = pokemon.name.capitalize(Locale.getDefault())
+
+            val matcher: Matcher = pattern.matcher(pokemon.url)
+            matcher.find()
+            val idWithSlashes = matcher.group(0)!!
+            val id = idWithSlashes.substring(1, idWithSlashes.length - 1);
+
+            binding.pokemonNum.text = "0".repeat(3-id.length)+id;
+
+            binding.pokemonPhoto.load(R.drawable.bulb)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.pokemon_card_search, parent, false)
+            .inflate(R.layout.fragment_search_recycler_item, parent, false)
         return PokemonViewHolder(view)
     }
 

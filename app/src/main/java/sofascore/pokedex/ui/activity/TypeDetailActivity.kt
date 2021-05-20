@@ -6,10 +6,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import sofascore.pokedex.ui.activity.ui.main.SectionsPagerAdapter
-import sofascore.pokedex.ui.activity.databinding.ActivityTypeDetailBinding
+import sofascore.pokedex.databinding.ActivityTypeDetailBinding
+import sofascore.pokedex.ui.activity.ui.type.SectionsPagerAdapter
 
 class TypeDetailActivity : AppCompatActivity() {
 
@@ -26,11 +24,5 @@ class TypeDetailActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = binding.fab
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 }

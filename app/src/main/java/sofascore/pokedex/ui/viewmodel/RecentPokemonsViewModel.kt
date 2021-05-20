@@ -13,7 +13,7 @@ class RecentPokemonsViewModel : ViewModel() {
     var pagingPokemonsList: LiveData<PagedList<PokemonNamePhoto>>
 
     init {
-        val config = PagedList.Config.Builder().setPageSize(10).setEnablePlaceholders(false).build()
+        val config = PagedList.Config.Builder().setPageSize(24).setEnablePlaceholders(false).build()
         pagingPokemonsList = initializePagedList(config).build()
     }
 

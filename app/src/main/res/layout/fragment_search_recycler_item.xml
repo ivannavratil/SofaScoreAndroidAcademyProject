@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="96dp"
-    android:backgroundTint="@color/tint_secondary"
     android:paddingStart="8dp"
     android:paddingTop="4dp"
     android:paddingEnd="8dp"
-    android:paddingBottom="4dp">
+    android:paddingBottom="4dp"
+    android:background="@drawable/rect_surface_1"
+    android:layout_marginBottom="4dp"
+    >
 
     <ImageView
         android:id="@+id/pokemon_photo"
@@ -23,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+       android:inputType="textCapSentences"
         android:id="@+id/pokemon_name"
         style="@style/Headline2DarkLeft"
         android:layout_width="wrap_content"

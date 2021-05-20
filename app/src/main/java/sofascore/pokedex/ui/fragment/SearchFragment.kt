@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import sofascore.pokedex.databinding.FragmentSearchBinding
 import sofascore.pokedex.ui.adapter.PagedPokemonNamePhotoAdapter
 import sofascore.pokedex.ui.viewmodel.RecentPokemonsViewModel
@@ -29,6 +30,7 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.recyclerViewRecent.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewRecent.adapter = adapter
 
         pagedPokemonsViewModel.pagingPokemonsList.observe(viewLifecycleOwner, {
