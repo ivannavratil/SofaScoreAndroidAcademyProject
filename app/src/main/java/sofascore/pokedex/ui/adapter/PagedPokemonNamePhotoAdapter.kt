@@ -35,7 +35,7 @@ class PagedPokemonNamePhotoAdapter :
             binding.pokemonNum.text = "0".repeat(3-id.length)+id;
 
             //TODO: move to somewhere else
-            binding.pokemonPhoto.load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+id+".png")
+            binding.pokemonPhoto.load(("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+id+".png"))
         }
     }
 
