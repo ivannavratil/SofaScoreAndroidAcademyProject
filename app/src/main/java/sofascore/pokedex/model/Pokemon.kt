@@ -1,4 +1,4 @@
-package sofascore.pokedex.model.db
+package sofascore.pokedex.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

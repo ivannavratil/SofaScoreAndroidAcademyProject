@@ -2,7 +2,7 @@ package sofascore.pokedex.model.db
 
 import androidx.room.Dao
 import androidx.room.Query
-import sofascore.pokedex.model.PokemonNamePhoto
+import sofascore.pokedex.model.Pokemon
 
 @Dao
 interface PokemonDao : BaseDao<Pokemon> {

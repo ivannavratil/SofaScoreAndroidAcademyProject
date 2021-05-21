@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.databinding.FragmentFavoritesBinding
-import sofascore.pokedex.model.db.Pokemon
+import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.ui.adapter.FavoritePokemonsAdapter
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*

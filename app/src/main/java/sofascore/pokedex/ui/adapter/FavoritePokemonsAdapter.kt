@@ -1,7 +1,6 @@
 package sofascore.pokedex.ui.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,13 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
-import sofascore.pokedex.model.db.Pokemon
-import sofascore.pokedex.ui.adapter.PagedPokemonNamePhotoAdapter.PokemonViewHolder
+import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 
 class FavoritePokemonsAdapter(
-   private val data: ArrayList<Pokemon>,
-   private val context: Context,
-   private val favoriteViewModel: FavoriteViewModel
+    private val data: ArrayList<Pokemon>,
+    private val context: Context,
+    private val favoriteViewModel: FavoriteViewModel
 ) : RecyclerView.Adapter<FavoritePokemonsAdapter.PokemonHolder>() {
 
     private var handlerVisible: Boolean = false

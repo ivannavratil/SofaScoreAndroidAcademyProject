@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import sofascore.pokedex.model.PokemonNamePhoto
+import sofascore.pokedex.model.Pokemon
 
 @Database(
     entities = [Pokemon::class],

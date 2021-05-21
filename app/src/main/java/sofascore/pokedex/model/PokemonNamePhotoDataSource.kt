@@ -3,6 +3,7 @@ package sofascore.pokedex.model
 import androidx.paging.PageKeyedDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import sofascore.pokedex.model.network.Network
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -20,6 +21,7 @@ class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
         callback: LoadInitialCallback<Int, PokemonNamePhoto>
     ) {
         scope.launch {
+            //TODO: change to return Pokemon instead of PokemonNamePhoto
             val response1 = apiService.getPagedPokemons(0)
 
             val body = response1.body()!!

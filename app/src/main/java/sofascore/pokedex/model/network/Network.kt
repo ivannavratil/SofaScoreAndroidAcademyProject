@@ -1,4 +1,4 @@
-package sofascore.pokedex.model
+package sofascore.pokedex.model.network
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
