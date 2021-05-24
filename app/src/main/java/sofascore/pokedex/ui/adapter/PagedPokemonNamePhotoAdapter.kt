@@ -7,32 +7,26 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
+import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
+import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.model.PokemonNamePhoto
 import sofascore.pokedex.ui.adapter.PagedPokemonNamePhotoAdapter.*
 import java.util.*
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 class PagedPokemonNamePhotoAdapter :
-    PagedListAdapter<PokemonNamePhoto, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
+    PagedListAdapter<Pokemon, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
 
-    companion object {
-        private val pattern: Pattern = Pattern.compile("/\\d+/")
-    }
 
     class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = FragmentSearchRecyclerItemBinding.bind(view)
 
-        fun bindPokemons(pokemon: PokemonNamePhoto) {
+        fun bindPokemons(pokemon: Pokemon) {
             binding.pokemonName.text = pokemon.name.capitalize(Locale.getDefault())
 
-            val matcher: Matcher = pattern.matcher(pokemon.url)
-            matcher.find()
-            val idWithSlashes = matcher.group(0)!!
-            val id = idWithSlashes.substring(1, idWithSlashes.length - 1);
+           val id = Util.getId(pokemon.url)
 
-            binding.pokemonNum.text = "0".repeat(3-id.length)+id;
+            binding.pokemonNum.text = "0".repeat(3-id.toString().length)+id;
 
             //TODO: move to somewhere else
             binding.pokemonPhoto.load(("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+id+".png"))

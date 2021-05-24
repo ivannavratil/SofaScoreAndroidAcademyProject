@@ -19,12 +19,12 @@ class FavoriteViewModel : ViewModel() {
     }
 
     init{
-        favoritePokemons.value = mutableListOf(
-            Pokemon(
-            169,"Pero","/15"
-        ), Pokemon(
-            559,"Peroooo","/17"
-        ) )
+//        favoritePokemons.value = mutableListOf(
+//            Pokemon(
+//            169,"Pero","/15"
+//        ), Pokemon(
+//            559,"Peroooo","/17"
+//        ) )
 
     }
 

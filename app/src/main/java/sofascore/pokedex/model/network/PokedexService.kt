@@ -9,13 +9,13 @@ import sofascore.pokedex.model.AllPokemonsResponse
 interface PokedexService {
 
     @GET("pokemon")
-    suspend fun getPagedPokemons(@Query("offset") offset: Int, @Query("limit") limit: Int): Response<AllPokemonsResponse>
+    suspend fun getPagedPokemons(@Query("offset") offset: Int, @Query("limit") limit: Int): AllPokemonsResponse
 
     @GET("pokemon")
-    suspend fun getPagedPokemons(@Query("offset") offset: Int): Response<AllPokemonsResponse>
+    suspend fun getPagedPokemons(@Query("offset") offset: Int): AllPokemonsResponse
 
     @GET("pokemon/{id}")
-    suspend fun getPokemon(@Path("id") id: Int): Response<AllPokemonsResponse>
+    suspend fun getPokemon(@Path("id") id: Int): AllPokemonsResponse
 
 
 }

@@ -9,48 +9,52 @@ import java.util.regex.Pattern
 
 
 class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
-    PageKeyedDataSource<Int, PokemonNamePhoto>() {
+    PageKeyedDataSource<Int, Pokemon>() {
 
     companion object {
         private val pattern: Pattern = Pattern.compile("offset=\\d+")
     }
+
     private val apiService = Network().service
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, PokemonNamePhoto>
+        callback: LoadInitialCallback<Int, Pokemon>
     ) {
         scope.launch {
-            //TODO: change to return Pokemon instead of PokemonNamePhoto
-            val response1 = apiService.getPagedPokemons(0)
 
-            val body = response1.body()!!
-            callback.onResult(response1.body()!!.results, null,
-                if(body.next==null) null else (extractOffset(body.next) + 1))
+            val response: AllPokemonsResponse = apiService.getPagedPokemons(0)
+
+            val pokemonList = response.results.map { Pokemon(it, false) }.toList();
+
+            callback.onResult(
+                pokemonList, null,
+                if (response.next == null) null else (extractOffset(response.next) + 1)
+            )
         }
     }
 
     override fun loadBefore(
         params: LoadParams<Int>,
-        callback: LoadCallback<Int, PokemonNamePhoto>
+        callback: LoadCallback<Int, Pokemon>
     ) {
         scope.launch {
             val response = apiService.getPagedPokemons(params.key)
-            val body = response.body()!!
+            val pokemonList = response.results.map { Pokemon(it, false) }.toList();
             callback.onResult(
-                body.results,
-                if (body.previous == null) null else params.key - 1
+                pokemonList,
+                if (response.previous == null) null else params.key - 1
             )
         }
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, PokemonNamePhoto>) {
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Pokemon>) {
         scope.launch {
             val response = apiService.getPagedPokemons(params.key)
-            val body = response.body()!!
+            val pokemonList = response.results.map { Pokemon(it, false) }.toList();
             callback.onResult(
-                response.body()!!.results,
-                if (body.next == null) null else (params.key + 1)
+                pokemonList,
+                if (response.next == null) null else (params.key + 1)
             )
         }
     }
