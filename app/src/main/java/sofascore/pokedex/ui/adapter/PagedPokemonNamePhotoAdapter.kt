@@ -10,7 +10,6 @@ import sofascore.pokedex.R
 import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
-import sofascore.pokedex.model.PokemonNamePhoto
 import sofascore.pokedex.ui.adapter.PagedPokemonNamePhotoAdapter.*
 import java.util.*
 
@@ -27,6 +26,14 @@ class PagedPokemonNamePhotoAdapter :
            val id = Util.getId(pokemon.url)
 
             binding.pokemonNum.text = "0".repeat(3-id.toString().length)+id;
+
+            binding.pokemonFav.setImageResource(
+                when (pokemon.favourite) {
+                    true -> R.drawable.ic_star_1
+                    false -> R.drawable.ic_star_0
+                }
+            )
+
 
             //TODO: move to somewhere else
             binding.pokemonPhoto.load(("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+id+".png"))
