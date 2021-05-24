@@ -31,7 +31,5 @@ abstract class AppDatabase : RoomDatabase() {
                 AppDatabase::class.java,
                 "AppDatabaseRoom.db"
             ).build()
-
-
     }
 }

@@ -1,19 +1,19 @@
 package sofascore.pokedex.model
 
+import android.app.Application
 import androidx.paging.PageKeyedDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import sofascore.pokedex.Util
+import sofascore.pokedex.model.db.AppDatabase
 import sofascore.pokedex.model.network.Network
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 
-class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
+class PokemonNamePhotoDataSource(
+    private val scope: CoroutineScope,
+    private val application: Application
+) :
     PageKeyedDataSource<Int, Pokemon>() {
-
-    companion object {
-        private val pattern: Pattern = Pattern.compile("offset=\\d+")
-    }
 
     private val apiService = Network().service
 
@@ -23,24 +23,22 @@ class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
     ) {
         scope.launch {
 
-            val response: AllPokemonsResponse = apiService.getPagedPokemons(0)
-
-            val pokemonList = response.results.map { Pokemon(it, false) }.toList();
+            val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(0)
 
             callback.onResult(
                 pokemonList, null,
-                if (response.next == null) null else (extractOffset(response.next) + 1)
+                if (response.next == null) null else (Util.getOffset(response.next) + 1)
             )
         }
     }
+
 
     override fun loadBefore(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, Pokemon>
     ) {
         scope.launch {
-            val response = apiService.getPagedPokemons(params.key)
-            val pokemonList = response.results.map { Pokemon(it, false) }.toList();
+            val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(params.key)
             callback.onResult(
                 pokemonList,
                 if (response.previous == null) null else params.key - 1
@@ -50,8 +48,7 @@ class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Pokemon>) {
         scope.launch {
-            val response = apiService.getPagedPokemons(params.key)
-            val pokemonList = response.results.map { Pokemon(it, false) }.toList();
+            val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(params.key)
             callback.onResult(
                 pokemonList,
                 if (response.next == null) null else (params.key + 1)
@@ -59,12 +56,19 @@ class PokemonNamePhotoDataSource(private val scope: CoroutineScope) :
         }
     }
 
-    private fun extractOffset(string: String): Int {
-        val matcher: Matcher = pattern.matcher(string)
-        matcher.find()
-        val offsetWithNumber = matcher.group(0)!!
-        return Integer.parseInt(offsetWithNumber.substring(offsetWithNumber.indexOf("=") + 1))
+    private suspend fun responseToPokemonList(offset: Int): Pair<AllPokemonsResponse, List<Pokemon>> {
+        val response: AllPokemonsResponse = apiService.getPagedPokemons(offset)
 
+        val pokemonList =
+            response.results.map {
+                val id = Util.getId(it.url)
+
+                val fav =
+                    AppDatabase.getDatabase(application).PokemonDao().isPokemonFavourite(id)
+
+                Pokemon(id, it.name, it.url, fav ?: false)
+            }.toList()
+        return Pair(response, pokemonList)
     }
 
 

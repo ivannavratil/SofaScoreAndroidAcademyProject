@@ -10,14 +10,23 @@ import java.util.regex.Pattern
 object Util {
 
 
-    private val pattern: Pattern = Pattern.compile("/\\d+/")
+    private val idPattern: Pattern = Pattern.compile("/\\d+/")
+    private val offsetPattern: Pattern = Pattern.compile("offset=\\d+")
 
 
     fun getId(url: String): Int {
-        val matcher: Matcher = pattern.matcher(url)
+        val matcher: Matcher = idPattern.matcher(url)
         matcher.find()
         val idWithSlashes = matcher.group(0)!!
         return Integer.parseInt(idWithSlashes.substring(1, idWithSlashes.length - 1));
+    }
+
+    fun getOffset(string: String): Int {
+        val matcher: Matcher = offsetPattern.matcher(string)
+        matcher.find()
+        val offsetWithNumber = matcher.group(0)!!
+        return Integer.parseInt(offsetWithNumber.substring(offsetWithNumber.indexOf("=") + 1))
+
     }
 
 

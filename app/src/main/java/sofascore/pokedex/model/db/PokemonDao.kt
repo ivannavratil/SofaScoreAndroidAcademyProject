@@ -13,5 +13,7 @@ interface PokemonDao : BaseDao<Pokemon> {
     @Query("SELECT * FROM Pokemon WHERE favourite = 1")
     suspend fun getAllFavoritePokemons(): List<Pokemon>
 
+    @Query("SELECT favourite FROM Pokemon WHERE pokemon_id = :id")
+    suspend fun isPokemonFavourite(id: Int): Boolean?
 
 }
