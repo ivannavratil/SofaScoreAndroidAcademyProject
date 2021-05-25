@@ -18,11 +18,11 @@
         tools:text="Pokemon Name" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
         android:layout_width="168dp"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pokemon_name">
@@ -32,9 +32,10 @@
             style="@style/DescriptionColdGrayLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Pokedex Num" />
+            android:text="@string/pokedex_num" />
 
         <TextView
             android:id="@+id/pokedex_val"
@@ -46,14 +47,15 @@
             tools:text="001" />
 
         <TextView
-            android:layout_marginTop="16dp"
             android:id="@+id/pokemon_type"
             style="@style/DescriptionColdGrayLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/type"
+            android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pokedex_val"
-            tools:text="Type" />
+            app:layout_constraintTop_toBottomOf="@id/pokedex_val" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
@@ -66,14 +68,15 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:layout_marginTop="12dp"
+        android:id="@+id/pokemon_photo"
         android:layout_width="144dp"
         android:layout_height="144dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:src="@color/cold_gray"
-        app:layout_constraintTop_toBottomOf="@id/pokemon_name"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemon_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

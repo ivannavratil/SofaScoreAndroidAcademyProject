@@ -38,7 +38,10 @@ object Util {
         config.setLocale(locale)
         config.locale = locale
         context?.resources?.updateConfiguration(config, null)
+    }
 
+    fun String.capitalize(): String {
+        return this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() };
     }
 
 

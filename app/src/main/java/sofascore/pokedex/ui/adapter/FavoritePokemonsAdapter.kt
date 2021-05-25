@@ -1,6 +1,7 @@
 package sofascore.pokedex.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,9 @@ import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
+import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
-import kotlin.collections.ArrayList
 
 class FavoritePokemonsAdapter(
     private val data: ArrayList<Pokemon>,
@@ -38,10 +39,10 @@ class FavoritePokemonsAdapter(
         }
 
         private fun onClick(pokemon: Pokemon, context: Context) {
-//            val intent = Intent(context, WeatherCityDetailActivity()::class.java)
-//
-//            intent.putExtra(WeatherCityDetailActivity.WEATHER_CITY_BY_ID, weatherCity.woeID)
-//            context.startActivity(intent)
+            val intent = Intent(context, DetailPokemonActivity()::class.java)
+
+            intent.putExtra(DetailPokemonActivity.pokemonById, pokemon.id)
+            context.startActivity(intent)
         }
     }
 
@@ -50,7 +51,8 @@ class FavoritePokemonsAdapter(
         parent: ViewGroup,
         viewType: Int
     ): PokemonHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_search_recycler_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.fragment_search_recycler_item, parent, false)
         return PokemonHolder(view)
     }
 
@@ -91,7 +93,6 @@ class FavoritePokemonsAdapter(
         }
 
 
-
     }
 
     override fun getItemCount(): Int {
@@ -101,7 +102,6 @@ class FavoritePokemonsAdapter(
     fun getItem(position: Int): Pokemon {
         return data[position]
     }
-
 
 
 }

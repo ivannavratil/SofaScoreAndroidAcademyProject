@@ -2,11 +2,11 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_scroll_view_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/surface_0"
     android:fitsSystemWindows="true"
-    android:id="@+id/nested_scroll_view_main"
     tools:context=".ui.activity.DetailPokemonActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -51,11 +51,11 @@
 
 
                     <ImageView
-                        android:id="@+id/city_favorite"
+                        android:id="@+id/pokemon_favorite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_star_1"
+                        android:src="@drawable/ic_star_0"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -70,14 +70,10 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-<!--        android:id="@+id/swipe_refresh"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
 
-<!--        <include-->
-<!--            android:id="@+id/weather_included"-->
-<!--            layout="@layout/weather_content_scrolling" />-->
-<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+    <include
+        android:id="@+id/pokemon_details"
+        layout="@layout/pokemon_content_scrolling" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

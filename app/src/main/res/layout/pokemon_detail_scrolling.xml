@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <include
-            android:id="@+id/weather_main"
+            android:id="@+id/pokemon_main"
             layout="@layout/pokemon_detail_main_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

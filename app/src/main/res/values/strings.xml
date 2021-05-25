@@ -117,4 +117,8 @@
     <string name="language_hr">Croatian</string>
     <string name="language_en_short" translatable="false">en_US</string>
     <string name="language_hr_short" translatable="false">hr</string>
+    <string name="pokedex_num">Pokedex Num</string>
+    <string name="type">Type</string>
+    <string name="height">Height</string>
+    <string name="weight">Height</string>
 </resources>

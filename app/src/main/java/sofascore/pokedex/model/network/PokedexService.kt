@@ -1,10 +1,10 @@
 package sofascore.pokedex.model.network
 
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import sofascore.pokedex.model.AllPokemonsResponse
+import sofascore.pokedex.model.db.DetailPokemonResponse
 
 interface PokedexService {
 
@@ -15,7 +15,7 @@ interface PokedexService {
     suspend fun getPagedPokemons(@Query("offset") offset: Int): AllPokemonsResponse
 
     @GET("pokemon/{id}")
-    suspend fun getPokemon(@Path("id") id: Int): AllPokemonsResponse
+    suspend fun getPokemon(@Path("id") id: Int): DetailPokemonResponse
 
 
 }

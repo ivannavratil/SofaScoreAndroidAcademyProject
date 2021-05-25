@@ -22,7 +22,6 @@ class FavoritesFragment : Fragment() {
 
     private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoritesBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -35,8 +34,6 @@ class FavoritesFragment : Fragment() {
         val root: View = binding.root
 
         binding.recyclerViewFavorite.layoutManager = LinearLayoutManager(requireContext())
-
-        favoriteViewModel.loadFavoritePokemons(requireContext())
 
         var adapter: FavoritePokemonsAdapter? = null
 

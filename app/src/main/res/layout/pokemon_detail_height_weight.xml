@@ -2,19 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="96dp">
+    android:layout_height="96dp"
+    android:background="@color/surface_1"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/height"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/constraint_height"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/constraint_weight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/weight">
+        app:layout_constraintTop_toTopOf="parent">
 
         <include
+            android:id="@+id/included_height"
             layout="@layout/pokemon_detail_info_tile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,16 +28,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/weight"
+        android:id="@+id/constraint_weight"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@id/height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/constraint_height"
         app:layout_constraintTop_toTopOf="parent">
 
         <include
+            android:id="@+id/included_weight"
             layout="@layout/pokemon_detail_info_tile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
