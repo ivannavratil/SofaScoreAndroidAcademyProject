@@ -21,7 +21,7 @@ class PokemonDataSource(
         callback: LoadInitialCallback<Int, Pokemon>
     ) {
         scope.launch {
-            val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(0)
+            val (response: AllPokemonsResponse, pokemonList) = transformResponseToPokemonList(0)
             callback.onResult(
                 pokemonList, null,
                 if (response.next == null) null else (Util.getOffset(response.next) + 1)
@@ -34,7 +34,7 @@ class PokemonDataSource(
         callback: LoadCallback<Int, Pokemon>
     ) {
         scope.launch {
-            val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(params.key)
+            val (response: AllPokemonsResponse, pokemonList) = transformResponseToPokemonList(params.key)
             callback.onResult(
                 pokemonList,
                 if (response.previous == null) null else params.key - 1
@@ -44,7 +44,7 @@ class PokemonDataSource(
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Pokemon>) {
         scope.launch {
-            val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(params.key)
+            val (response: AllPokemonsResponse, pokemonList) = transformResponseToPokemonList(params.key)
             callback.onResult(
                 pokemonList,
                 if (response.next == null) null else (params.key + 1)
@@ -52,7 +52,7 @@ class PokemonDataSource(
         }
     }
 
-    private suspend fun responseToPokemonList(offset: Int): Pair<AllPokemonsResponse, List<Pokemon>> {
+    private suspend fun transformResponseToPokemonList(offset: Int): Pair<AllPokemonsResponse, List<Pokemon>> {
         val response: AllPokemonsResponse = apiService.getPagedPokemons(offset)
 
         val pokemonList =

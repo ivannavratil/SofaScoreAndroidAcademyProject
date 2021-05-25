@@ -17,9 +17,9 @@ import androidx.lifecycle.ViewModelProvider
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSettingsBinding
+import sofascore.pokedex.ui.activity.AboutActivity
 import sofascore.pokedex.ui.activity.MainActivity
 import sofascore.pokedex.ui.viewmodel.NotificationsViewModel
-import java.util.*
 
 
 class SettingsFragment : Fragment() {
@@ -43,6 +43,11 @@ class SettingsFragment : Fragment() {
         val root: View = binding.root
 
 
+        binding.moreInfo.setOnClickListener {
+            val intent = Intent(requireContext(), AboutActivity()::class.java)
+            startActivity(intent)
+        }
+
         val spinner: Spinner = binding.language
 
         ArrayAdapter.createFromResource(
@@ -63,7 +68,7 @@ class SettingsFragment : Fragment() {
             }
 
             spinner.setSelection(sharedPref.getInt("LANGUAGE", -1))
-            println("stvaranje fragment, selected item =>" +spinner.selectedItemId)
+            println("stvaranje fragment, selected item =>" + spinner.selectedItemId)
         }
 
 
