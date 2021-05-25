@@ -13,18 +13,21 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSettingsBinding
 import sofascore.pokedex.ui.activity.AboutActivity
 import sofascore.pokedex.ui.activity.MainActivity
+import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import sofascore.pokedex.ui.viewmodel.NotificationsViewModel
 
 
 class SettingsFragment : Fragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentSettingsBinding? = null
 
     // This property is only valid between onCreateView and
@@ -47,6 +50,11 @@ class SettingsFragment : Fragment() {
             val intent = Intent(requireContext(), AboutActivity()::class.java)
             startActivity(intent)
         }
+
+        binding.clearFavourites.setOnClickListener {
+            favoriteViewModel.clearFavouritePokemons()
+        }
+
 
         val spinner: Spinner = binding.language
 

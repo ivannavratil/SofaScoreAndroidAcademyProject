@@ -56,4 +56,10 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
             p2.favouriteNumber = temp
         }
     }
+
+    fun clearFavouritePokemons() {
+        viewModelScope.launch {
+            AppDatabase.getDatabase(getApplication()).PokemonDao().clearFavouritePokemons()
+        }
+    }
 }

@@ -29,4 +29,7 @@ interface PokemonDao : BaseDao<Pokemon> {
         favouriteNumber: Int?
     )
 
+    @Query("UPDATE Pokemon SET p_favourite=0, p_favourite_number = NULL")
+    suspend fun clearFavouritePokemons()
+
 }
