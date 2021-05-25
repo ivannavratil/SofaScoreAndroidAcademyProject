@@ -3,14 +3,15 @@ package sofascore.pokedex.ui.activity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.ActivityDetailPokemonBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
+import sofascore.pokedex.ui.adapter.TypeAdapter
 import sofascore.pokedex.ui.viewmodel.DetailPokemonViewModel
-import java.util.*
 
 
 class DetailPokemonActivity : AppCompatActivity() {
@@ -34,8 +35,16 @@ class DetailPokemonActivity : AppCompatActivity() {
             applicationContext
         )
 
+        val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecyler
+        typeRecycler.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         detailPokemonViewModel.detailPokemon.observe(this, {
             setupUI(it)
+
+
+            val adapter = TypeAdapter(it.types, this)
+            typeRecycler.adapter = adapter
         })
 
 
@@ -47,23 +56,20 @@ class DetailPokemonActivity : AppCompatActivity() {
 
 
         binding.realTitle.text = detailPokemon.name.capitalize()
-
         binding.pokemonDetails.pokemonMain.pokemonName.text = detailPokemon.name.capitalize()
-
         binding.pokemonDetails.pokemonMain.pokedexVal.text = detailPokemon.getFormattedId()
-
         binding.pokemonDetails.pokemonMain.pokemonPhoto.load(detailPokemon.getAvatarUrl())
 
+
         val pokemonHeightWeight = binding.pokemonDetails.pokemonHeightWeight;
-
         pokemonHeightWeight.includedHeight.image.load(R.drawable.ic_height)
-
         pokemonHeightWeight.includedHeight.attKey.text = resources.getString(R.string.height)
-        pokemonHeightWeight.includedHeight.attVal.text = Util.heightToFormattedHeight(detailPokemon.height)
-
+        pokemonHeightWeight.includedHeight.attVal.text =
+            Util.heightToFormattedHeight(detailPokemon.height)
         pokemonHeightWeight.includedWeight.image.load(R.drawable.ic_weight)
         pokemonHeightWeight.includedWeight.attKey.text = resources.getString(R.string.weight)
-        pokemonHeightWeight.includedWeight.attVal.text = Util.weightToFormattedWeight(detailPokemon.weight)
+        pokemonHeightWeight.includedWeight.attVal.text =
+            Util.weightToFormattedWeight(detailPokemon.weight)
 
 
     }
