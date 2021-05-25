@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import sofascore.pokedex.R
+import sofascore.pokedex.Util
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.ActivityDetailPokemonBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
@@ -56,12 +57,13 @@ class DetailPokemonActivity : AppCompatActivity() {
         val pokemonHeightWeight = binding.pokemonDetails.pokemonHeightWeight;
 
         pokemonHeightWeight.includedHeight.image.load(R.drawable.ic_height)
+
         pokemonHeightWeight.includedHeight.attKey.text = resources.getString(R.string.height)
-        pokemonHeightWeight.includedHeight.attVal.text = detailPokemon.height.toString()
+        pokemonHeightWeight.includedHeight.attVal.text = Util.heightToFormattedHeight(detailPokemon.height)
 
         pokemonHeightWeight.includedWeight.image.load(R.drawable.ic_weight)
         pokemonHeightWeight.includedWeight.attKey.text = resources.getString(R.string.weight)
-        pokemonHeightWeight.includedWeight.attVal.text = detailPokemon.weight.toString()
+        pokemonHeightWeight.includedWeight.attVal.text = Util.weightToFormattedWeight(detailPokemon.weight)
 
 
     }
