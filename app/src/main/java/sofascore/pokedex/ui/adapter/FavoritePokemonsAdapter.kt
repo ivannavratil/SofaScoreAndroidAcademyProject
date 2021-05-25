@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FavoritePokemonsAdapter(
     private val data: ArrayList<Pokemon>,
@@ -61,8 +64,9 @@ class FavoritePokemonsAdapter(
 
         val pokemon = data[position]
 
-        holder.binding.pokemonName.text = pokemon.name
-        holder.binding.pokemonNum.text = pokemon.id.toString()
+        holder.binding.pokemonPhoto.load(pokemon.getAvatarUrl())
+        holder.binding.pokemonName.text = pokemon.name.capitalize(Locale.getDefault())
+        holder.binding.pokemonNum.text = pokemon.getFormattedId()
 
         holder.binding.pokemonFav.setImageResource(
             when (pokemon.favourite) {
@@ -73,7 +77,7 @@ class FavoritePokemonsAdapter(
 
 
         holder.binding.pokemonFav.setOnClickListener { v ->
-            if (v is ImageView) {
+            if (v is ImageView && !handlerVisible) {
                 val newFavourite = !pokemon.favourite
 
                 favoriteViewModel.flipFavourite(context, pokemon)
@@ -85,6 +89,8 @@ class FavoritePokemonsAdapter(
                 notifyItemRangeChanged(position, data.size)
             }
         }
+
+
 
     }
 

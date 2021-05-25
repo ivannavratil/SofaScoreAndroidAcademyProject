@@ -8,14 +8,19 @@ import java.io.Serializable
 @Entity
 data class Pokemon(
     @PrimaryKey
-    @ColumnInfo(name = "pokemon_id") var id: Int,
-    @ColumnInfo(name = "pokemon_name") var name: String,
-    @ColumnInfo(name = "pokemon_url") var url: String,
-    var favourite: Boolean
+    @ColumnInfo(name = "p_id") var id: Int,
+    @ColumnInfo(name = "p_name") var name: String,
+    @ColumnInfo(name = "p_url") var url: String,
+    @ColumnInfo(name = "p_favourite") var favourite: Boolean,
+    @ColumnInfo(name = "p_favourite_number") var favouriteNumber: Int?
 ) : Serializable {
+    fun getFormattedId(): String {
+        return "0".repeat(3 - id.toString().length) + id
+    }
 
-
-
+    fun getAvatarUrl(): String {
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png"
+    }
 
 }
 

@@ -1,31 +1,38 @@
 package sofascore.pokedex.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
-import sofascore.pokedex.ui.adapter.PagedPokemonNamePhotoAdapter.*
+import sofascore.pokedex.ui.adapter.PagedPokemonAdapter.PokemonViewHolder
+import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
 
-class PagedPokemonNamePhotoAdapter :
+class PagedPokemonAdapter(
+    private val context: Context,
+    private val pagedViewModel: FavoriteViewModel
+) :
     PagedListAdapter<Pokemon, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
 
 
     class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = FragmentSearchRecyclerItemBinding.bind(view)
 
-        fun bindPokemons(pokemon: Pokemon) {
+        fun bindPokemons(
+            pokemon: Pokemon,
+            context: Context,
+            pagedViewModel: FavoriteViewModel
+        ) {
             binding.pokemonName.text = pokemon.name.capitalize(Locale.getDefault())
 
-           val id = Util.getId(pokemon.url)
-
-            binding.pokemonNum.text = "0".repeat(3-id.toString().length)+id;
+            binding.pokemonNum.text = pokemon.getFormattedId()
 
             binding.pokemonFav.setImageResource(
                 when (pokemon.favourite) {
@@ -34,9 +41,18 @@ class PagedPokemonNamePhotoAdapter :
                 }
             )
 
+            binding.pokemonFav.setOnClickListener { v ->
+                if (v is ImageView) {
 
-            //TODO: move to somewhere else
-            binding.pokemonPhoto.load(("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+id+".png"))
+                    val newFavourite = !pokemon.favourite
+
+                    pagedViewModel.flipFavourite(context, pokemon)
+
+                    v.setImageResource(if (newFavourite) R.drawable.ic_star_1 else R.drawable.ic_star_0)
+                }
+            }
+
+            binding.pokemonPhoto.load(pokemon.getAvatarUrl())
         }
     }
 
@@ -48,7 +64,7 @@ class PagedPokemonNamePhotoAdapter :
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bindPokemons(it);
+            holder.bindPokemons(it, context, pagedViewModel)
         }
     }
 

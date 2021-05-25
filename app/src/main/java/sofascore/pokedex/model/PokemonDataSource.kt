@@ -9,11 +9,10 @@ import sofascore.pokedex.model.db.AppDatabase
 import sofascore.pokedex.model.network.Network
 
 
-class PokemonNamePhotoDataSource(
+class PokemonDataSource(
     private val scope: CoroutineScope,
     private val application: Application
-) :
-    PageKeyedDataSource<Int, Pokemon>() {
+) : PageKeyedDataSource<Int, Pokemon>() {
 
     private val apiService = Network().service
 
@@ -22,16 +21,13 @@ class PokemonNamePhotoDataSource(
         callback: LoadInitialCallback<Int, Pokemon>
     ) {
         scope.launch {
-
             val (response: AllPokemonsResponse, pokemonList) = responseToPokemonList(0)
-
             callback.onResult(
                 pokemonList, null,
                 if (response.next == null) null else (Util.getOffset(response.next) + 1)
             )
         }
     }
-
 
     override fun loadBefore(
         params: LoadParams<Int>,
@@ -66,7 +62,11 @@ class PokemonNamePhotoDataSource(
                 val fav =
                     AppDatabase.getDatabase(application).PokemonDao().isPokemonFavourite(id)
 
-                Pokemon(id, it.name, it.url, fav ?: false)
+                val favNumber =
+                    if (fav == null) null
+                    else AppDatabase.getDatabase(application).PokemonDao().getFavouriteNumber(id)
+
+                Pokemon(id, it.name, it.url, fav ?: false, favNumber)
             }.toList()
         return Pair(response, pokemonList)
     }
