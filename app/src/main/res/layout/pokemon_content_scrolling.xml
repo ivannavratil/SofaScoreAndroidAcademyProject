@@ -40,7 +40,7 @@
                 <include
                     android:id="@+id/pokemon_height_weight"
                     layout="@layout/pokemon_detail_height_weight"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="96dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
