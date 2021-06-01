@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import sofascore.pokedex.databinding.FragmentTypeDetailBinding
 import sofascore.pokedex.ui.viewmodel.PageViewModel
 
@@ -14,7 +14,7 @@ import sofascore.pokedex.ui.viewmodel.PageViewModel
  */
 class PlaceholderFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
+    private val pageViewModel: PageViewModel by viewModels()
     private var _binding: FragmentTypeDetailBinding? = null
 
     // This property is only valid between onCreateView and
@@ -23,9 +23,8 @@ class PlaceholderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
-        }
+        pageViewModel.setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+
     }
 
     override fun onCreateView(
@@ -34,10 +33,9 @@ class PlaceholderFragment : Fragment() {
     ): View {
 
         _binding = FragmentTypeDetailBinding.inflate(inflater, container, false)
-        val root = binding.root
 
 
-        return root
+        return binding.root
     }
 
     companion object {

@@ -109,8 +109,9 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_type_detail">TypeDetailActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="DAMAGE_OVERVIEW">DAMAGE OVERVIEW</string>
+    <string name="MOVES">MOVES</string>
+    <string name="POKEMONS">POKEMONS</string>
     <string name="clear_my_favorites_list">Clear my favorites list</string>
 
     <string name="language_en">English</string>

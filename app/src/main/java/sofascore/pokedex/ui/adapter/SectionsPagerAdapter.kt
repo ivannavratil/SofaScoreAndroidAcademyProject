@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import sofascore.pokedex.R
-import sofascore.pokedex.ui.fragment.PlaceholderFragment
+import sofascore.pokedex.ui.fragment.TypeDetailDamageOverviewFragment
+import sofascore.pokedex.ui.fragment.TypeDetailMovesFragment
+import sofascore.pokedex.ui.fragment.TypeDetailPokemonsFragment
 
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
+    R.string.DAMAGE_OVERVIEW,
+    R.string.MOVES,
+    R.string.POKEMONS
 )
 
 /**
@@ -21,17 +24,19 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        return when (position) {
+            0 -> TypeDetailDamageOverviewFragment()
+            1 -> TypeDetailMovesFragment()
+            2 -> TypeDetailPokemonsFragment()
+            else -> throw IllegalArgumentException()
+        }
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return context.resources.getString(TAB_TITLES[position])
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+        return TAB_TITLES.size
     }
 }
