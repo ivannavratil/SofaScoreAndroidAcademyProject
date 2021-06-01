@@ -17,7 +17,7 @@ class TypeDetailViewModel : ViewModel() {
 
     private val network = Network().service
 
-    fun getDetailedPokemonInfo(id: Int, context: Context) {
+    fun getDetailTypeAndMove(id: Int, context: Context) {
 
         viewModelScope.launch {
 

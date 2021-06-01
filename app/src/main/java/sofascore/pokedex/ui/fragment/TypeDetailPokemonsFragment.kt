@@ -5,29 +5,55 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import sofascore.pokedex.R
-import sofascore.pokedex.ui.viewmodel.TypeDetailPokemonsViewModel
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import sofascore.pokedex.databinding.TypeDetailPokemonsFragmentBinding
+import sofascore.pokedex.ui.adapter.TypeDetailPokemonAdapter
+import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
 
 class TypeDetailPokemonsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = TypeDetailPokemonsFragment()
-    }
+    private val typeDetailViewModel: TypeDetailViewModel by viewModels()
+    private lateinit var binding: TypeDetailPokemonsFragmentBinding
 
-    private lateinit var viewModel: TypeDetailPokemonsViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.type_detail_pokemons_fragment, container, false)
+    ): View {
+        super.onCreate(savedInstanceState)
+
+       binding = TypeDetailPokemonsFragmentBinding.inflate(inflater, container, false)
+
+        binding.recyclerPokemons.layoutManager = GridLayoutManager(requireContext(),3)
+
+        var pokemonAdapter: TypeDetailPokemonAdapter
+
+        if (typeDetailViewModel.typeDetail.value != null) {
+            pokemonAdapter = TypeDetailPokemonAdapter(
+                typeDetailViewModel.typeDetail.value!!.pokemon,
+                requireContext(),
+            )
+            binding.recyclerPokemons.adapter = pokemonAdapter
+        }
+
+        typeDetailViewModel.typeDetail.observe(viewLifecycleOwner) {
+            pokemonAdapter = TypeDetailPokemonAdapter(
+                it.pokemon,
+                requireContext(),
+            )
+            binding.recyclerPokemons.adapter = pokemonAdapter
+        }
+
+        //TODO: fix
+        typeDetailViewModel.getDetailTypeAndMove(1,requireContext())
+
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TypeDetailPokemonsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
+
 
 }

@@ -30,7 +30,7 @@ class SearchFragment : Fragment() {
     ): View {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
 
 
         adapter = PagedPokemonAdapter(requireContext(), favouritePokemonsViewModel)
@@ -43,7 +43,7 @@ class SearchFragment : Fragment() {
             adapter.submitList(it)
         })
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

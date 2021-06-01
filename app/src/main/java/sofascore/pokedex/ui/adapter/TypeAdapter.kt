@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
+import sofascore.pokedex.Util
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.PokemonTypeRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
@@ -33,7 +34,7 @@ class TypeAdapter(
 
             val intent = Intent(context, TypeDetailActivity()::class.java)
 
-            intent.putExtra("type", type.type)
+            intent.putExtra(TypeDetailActivity.type, Util.getId(type.type.url))
             context.startActivity(intent)
 
         }

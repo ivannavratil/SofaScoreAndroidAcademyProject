@@ -22,12 +22,6 @@ class TypeDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        typeDetailViewModel.getDetailedPokemonInfo(
-            intent.getIntExtra(DetailPokemonActivity.pokemonById, -1),
-            applicationContext
-        )
-
         binding = ActivityTypeDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -39,6 +33,12 @@ class TypeDetailActivity : AppCompatActivity() {
 
         //TODO: doesn't work
         binding.toolbar.setNavigationOnClickListener { finish() }
+
+
+        typeDetailViewModel.getDetailTypeAndMove(
+            intent.getIntExtra(type, -1),
+            applicationContext
+        )
 
     }
 }
