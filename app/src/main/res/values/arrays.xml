@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
-
     <string-array name="available_languages">
         <item>@string/language_en</item>
         <item>@string/language_hr</item>
     </string-array>
 
-
     <string-array name="available_languages_short">
-        <item>@string/language_en_short</item>
-        <item>@string/language_hr_short</item>
+        <item>en</item>
+        <item>hr</item>
     </string-array>
-
-
-
 </resources>

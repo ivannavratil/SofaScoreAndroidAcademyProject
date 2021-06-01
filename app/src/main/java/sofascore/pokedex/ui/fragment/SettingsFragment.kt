@@ -15,6 +15,8 @@ import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import org.intellij.lang.annotations.Language
+import sofascore.pokedex.LanguageHelper
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSettingsBinding
@@ -23,27 +25,28 @@ import sofascore.pokedex.ui.activity.MainActivity
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import sofascore.pokedex.ui.viewmodel.NotificationsViewModel
 
+const val LANGUAGE_EN = "en"
+const val LANGUAGE_HR = "hr"
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+
     private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentSettingsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var firstSelection = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+    ): View {
 
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
 
 
         binding.moreInfo.setOnClickListener {
@@ -58,6 +61,9 @@ class SettingsFragment : Fragment() {
 
         val spinner: Spinner = binding.language
 
+
+        val currentLanguageCode = LanguageHelper.getPreferredLanguage(requireContext())
+
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.available_languages,
@@ -65,50 +71,44 @@ class SettingsFragment : Fragment() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
-            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        }
 
-            if (sharedPref!!.getInt("LANGUAGE", -1) == -1) {
-                with(sharedPref.edit()) {
-                    putInt("LANGUAGE", 0)
-                    apply()
-                }
-
-            }
-
-            spinner.setSelection(sharedPref.getInt("LANGUAGE", -1))
-            println("stvaranje fragment, selected item =>" + spinner.selectedItemId)
+        if (currentLanguageCode == LANGUAGE_HR) {
+            binding.language.setSelection(1)
         }
 
 
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?,
+                parent: AdapterView<*>,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                println("position => $position")
-
-                if (activity?.getPreferences(Context.MODE_PRIVATE)!!
-                        .getInt("LANGUAGE", -1) == spinner.selectedItemPosition
-                )
-                    return
 
 
-                val languageShort =
-                    (resources.getStringArray(R.array.available_languages_short)[spinner.selectedItemPosition]) // 12, 16, 20
-
-
-                val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-                with(sharedPref.edit()) {
-                    putInt("LANGUAGE", position)
-                    apply()
+                if (firstSelection) {
+                    firstSelection = false
+                } else {
+                    val item = parent.getItemAtPosition(position) as String
+                    val tempLanguageCode = languageStringToCode(item)
+                    if (tempLanguageCode != currentLanguageCode) {
+                        LanguageHelper.setPreferredLanguage(requireContext(), tempLanguageCode)
+                        restartApp()
+                    }
                 }
 
-                Util.changeLanguage(languageShort, requireContext())
-                //TODO: fix
-                //restartApp()
+
+
+
+
+
+
+
+
+
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -118,12 +118,20 @@ class SettingsFragment : Fragment() {
         }
 
 
-        return root
+        return binding.root
+    }
+
+    private fun languageStringToCode(languageString: String): String {
+        return when (languageString) {
+            requireContext().getString(R.string.language_en) -> LANGUAGE_EN
+            requireContext().getString(R.string.language_hr) -> LANGUAGE_HR
+            else -> ""
+        }
     }
 
     private fun restartApp() {
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(activity, MainActivity::class.java)
             val cn = intent.component
             val mainIntent = Intent.makeRestartActivityTask(cn)
             startActivity(mainIntent)

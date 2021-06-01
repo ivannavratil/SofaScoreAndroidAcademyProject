@@ -1,5 +1,6 @@
 package sofascore.pokedex.ui.activity
 
+import android.content.Context
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import sofascore.pokedex.LanguageHelper
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.ActivityMainBinding
 import java.util.*
@@ -35,5 +37,9 @@ class MainActivity : AppCompatActivity() {
 //        )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LanguageHelper.wrapLanguage(newBase))
     }
 }

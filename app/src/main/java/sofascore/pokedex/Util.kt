@@ -1,7 +1,5 @@
 package sofascore.pokedex
 
-import android.content.Context
-import android.content.res.Configuration
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -52,20 +50,8 @@ object Util {
         }" (${height2}m)"""
     }
 
-
-    @Suppress("DEPRECATION")
-    fun changeLanguage(newLanguage: String, context: Context?) {
-        val locale = Locale(newLanguage)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.setLocale(locale)
-        config.locale = locale
-        context?.resources?.updateConfiguration(config, null)
-    }
-
     fun String.capitalize(): String {
         return this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() };
     }
-
 
 }
