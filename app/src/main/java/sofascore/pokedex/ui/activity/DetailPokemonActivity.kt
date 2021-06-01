@@ -54,9 +54,22 @@ class DetailPokemonActivity : AppCompatActivity() {
 
             val abilitiesAdapter = AbilitiesAdapter(it.abilities, this)
             abilitiesRecycler.adapter = abilitiesAdapter
-
-
         })
+
+        detailPokemonViewModel.favourite.observe(this, {
+            binding.pokemonFavorite.setImageResource(if (detailPokemonViewModel.favourite.value == true) R.drawable.ic_star_1 else R.drawable.ic_star_0)
+        })
+
+
+        binding.pokemonFavorite.setOnClickListener {
+            detailPokemonViewModel.detailPokemon.value?.let {
+                detailPokemonViewModel.favourite.value?.let { _ ->
+                    detailPokemonViewModel.flipFavourite(
+                        applicationContext
+                    )
+                }
+            }
+        }
 
 
     }
@@ -82,6 +95,7 @@ class DetailPokemonActivity : AppCompatActivity() {
 
         setupMainInfo(detailPokemon)
         setupWeightAndHeight(detailPokemon)
+
 
     }
 

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +14,6 @@ import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.ui.adapter.FavoritePokemonsAdapter
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class FavoritesFragment : Fragment() {
@@ -104,5 +102,10 @@ class FavoritesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        favoriteViewModel.loadFavoritePokemons(requireContext())
     }
 }

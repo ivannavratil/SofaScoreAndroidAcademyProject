@@ -91,8 +91,6 @@ class FavoritePokemonsAdapter(
                 notifyItemRangeChanged(position, data.size)
             }
         }
-
-
     }
 
     override fun getItemCount(): Int {
