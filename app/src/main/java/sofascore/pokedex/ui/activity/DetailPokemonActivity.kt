@@ -11,6 +11,7 @@ import sofascore.pokedex.Util
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.ActivityDetailPokemonBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
+import sofascore.pokedex.ui.adapter.AbilitiesAdapter
 import sofascore.pokedex.ui.adapter.StatsAdapter
 import sofascore.pokedex.ui.adapter.TypeAdapter
 import sofascore.pokedex.ui.viewmodel.DetailPokemonViewModel
@@ -46,6 +47,10 @@ class DetailPokemonActivity : AppCompatActivity() {
         val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
         statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
+        val abilitiesRecycler = binding.pokemonDetails.abilitiesRecycler
+        abilitiesRecycler.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
 
 
         detailPokemonViewModel.detailPokemon.observe(this, {
@@ -55,9 +60,13 @@ class DetailPokemonActivity : AppCompatActivity() {
             typeRecycler.adapter = typeAdapter
 
             val statsAdapter = StatsAdapter(it.stats, this)
-            binding.pokemonDetails.pokemonStats.totalValue.text = it.stats.map { a -> a.baseStat }.sum().toString()
-
+            binding.pokemonDetails.pokemonStats.totalValue.text =
+                it.stats.map { a -> a.baseStat }.sum().toString()
             statsRecycler.adapter = statsAdapter
+
+            val abilitiesAdapter = AbilitiesAdapter(it.abilities, this)
+            abilitiesRecycler.adapter = abilitiesAdapter
+
 
         })
 
@@ -71,23 +80,12 @@ class DetailPokemonActivity : AppCompatActivity() {
         setupMainInfo(detailPokemon)
         setupWeightAndHeight(detailPokemon)
 
-        setupAbilities(detailPokemon)
+
 
 
     }
 
-    private fun setupAbilities(detailPokemon: DetailPokemonResponse) {
-        val abilities = binding.pokemonDetails.pokemonAbilities;
-        val abilities1 = detailPokemon.abilities;
 
-        abilities.firstAbility.text = abilities1[0].ability.name.capitalize()
-        abilities.secondAbilityHidden.visibility =
-            if (abilities1[0].isHidden) View.GONE else View.VISIBLE
-
-        abilities.secondAbility.text = abilities1[1].ability.name.capitalize()
-        abilities.secondAbilityHidden.visibility =
-            if (abilities1[1].isHidden) View.GONE else View.VISIBLE
-    }
 
     private fun setupMainInfo(detailPokemon: DetailPokemonResponse) {
         binding.realTitle.text = detailPokemon.name.capitalize()
