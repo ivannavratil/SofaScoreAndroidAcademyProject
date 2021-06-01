@@ -14,6 +14,10 @@
     <string name="Select_a_pokemon">Odaberi pokemona</string>
     <string name="language_en">Engleski</string>
     <string name="language_hr">Hrvatski</string>
+    <string name="type">Tip</string>
+    <string name="height">VIsina</string>
+    <string name="weight">Težina</string>
+    <string name="pokedex_num">Broj</string>
 
 
 </resources>
