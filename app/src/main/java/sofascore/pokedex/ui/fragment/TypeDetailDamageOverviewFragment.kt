@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import sofascore.pokedex.R
+import sofascore.pokedex.ui.viewmodel.TypeDetailDamageOverviewViewModel
 
 class TypeDetailDamageOverviewFragment : Fragment() {
 

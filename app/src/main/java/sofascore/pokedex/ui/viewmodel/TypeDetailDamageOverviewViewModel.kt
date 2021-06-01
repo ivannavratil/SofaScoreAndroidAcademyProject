@@ -1,4 +1,4 @@
-package sofascore.pokedex.ui.fragment
+package sofascore.pokedex.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 

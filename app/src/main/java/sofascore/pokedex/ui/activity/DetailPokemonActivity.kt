@@ -32,7 +32,7 @@ class DetailPokemonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        detailPokemonViewModel.getDetailedPokemonInfo(
+        detailPokemonViewModel.getDetailedTypeAndMoveInfo(
             intent.getIntExtra(pokemonById, -1),
             applicationContext
         )

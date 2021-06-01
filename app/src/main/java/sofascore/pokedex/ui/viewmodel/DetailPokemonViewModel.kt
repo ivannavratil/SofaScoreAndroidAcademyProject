@@ -15,7 +15,7 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
 
     private val network = Network().service
 
-    fun getDetailedPokemonInfo(id: Int, context: Context) {
+    fun getDetailedTypeAndMoveInfo(id: Int, context: Context) {
         viewModelScope.launch {
             val response = network.getPokemon(id);
             detailPokemon.value = response
