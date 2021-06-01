@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
@@ -37,19 +38,7 @@ class DetailPokemonActivity : AppCompatActivity() {
             applicationContext
         )
 
-
-        val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecyler
-        typeRecycler.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-
-        val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
-        statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
-        val abilitiesRecycler = binding.pokemonDetails.abilitiesRecycler
-        abilitiesRecycler.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
+        val (typeRecycler, statsRecycler, abilitiesRecycler) = setupRecyclerViews()
 
 
         detailPokemonViewModel.detailPokemon.observe(this, {
@@ -72,6 +61,21 @@ class DetailPokemonActivity : AppCompatActivity() {
 
     }
 
+    private fun setupRecyclerViews(): Triple<RecyclerView, RecyclerView, RecyclerView> {
+        val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecyler
+        typeRecycler.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+
+        val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
+        statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        val abilitiesRecycler = binding.pokemonDetails.abilitiesRecycler
+        abilitiesRecycler.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        return Triple(typeRecycler, statsRecycler, abilitiesRecycler)
+    }
+
     private fun setupUI(detailPokemon: DetailPokemonResponse) {
 
         binding.toolbar.setNavigationOnClickListener { finish() }
@@ -80,7 +84,6 @@ class DetailPokemonActivity : AppCompatActivity() {
         setupWeightAndHeight(detailPokemon)
 
     }
-
 
 
     private fun setupMainInfo(detailPokemon: DetailPokemonResponse) {
