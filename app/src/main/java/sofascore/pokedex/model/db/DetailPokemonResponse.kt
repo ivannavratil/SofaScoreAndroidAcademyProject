@@ -2,6 +2,7 @@ package sofascore.pokedex.model.db
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class DetailPokemonResponse(
     @SerializedName("abilities")
@@ -477,13 +478,13 @@ data class DetailPokemonResponse(
         val slot: Int, // 1 - order of showing
         @SerializedName("type")
         val type: Type
-    ) {
+    ) : Serializable {
         data class Type(
             @SerializedName("name")
             val name: String, // grass
             @SerializedName("url")
             val url: String // https://pokeapi.co/api/v2/type/12/
-        )
+        ) : Serializable
     }
 
     fun getFormattedId(): String {

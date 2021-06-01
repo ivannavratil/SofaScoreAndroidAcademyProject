@@ -2,10 +2,11 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="69dp"
+    android:layout_height="32dp">
 
-    <Button
+    <TextView
+        android:background="@color/flat_pokemon_type_grass"
         android:id="@+id/type"
         style="@style/Headline3Surface1Left"
         android:layout_width="wrap_content"

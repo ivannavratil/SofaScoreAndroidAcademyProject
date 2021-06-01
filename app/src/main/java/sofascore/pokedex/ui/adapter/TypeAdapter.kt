@@ -1,17 +1,17 @@
 package sofascore.pokedex.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.PokemonTypeRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
-import sofascore.pokedex.ui.fragment.PlaceholderFragment
+import sofascore.pokedex.ui.activity.TypeDetailActivity
 import java.util.*
 
 
@@ -31,15 +31,11 @@ class TypeAdapter(
 
         private fun onClick(type: DetailPokemonResponse.Type, context: Context) {
 
-            //TODO: fix
+            val intent = Intent(context, TypeDetailActivity()::class.java)
 
-            val nextFrag = PlaceholderFragment()
+            intent.putExtra("type", type.type)
+            context.startActivity(intent)
 
-            (context as AppCompatActivity)
-                .supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, nextFrag)
-                .commitNow()
         }
     }
 
@@ -50,21 +46,23 @@ class TypeAdapter(
     }
 
     override fun onBindViewHolder(
-        holder: TypeHolder,
+        holder: TypeAdapter.TypeHolder,
         position: Int
     ) {
         val type = data[position];
 
-        val button: Button = holder.binding.type;
-        button.text = type.type.name.capitalize()
+        val textView: TextView = holder.binding.type;
+        textView.text = type.type.name.capitalize()
 
+
+        //TODO: fix color
         val identifier = context.resources.getIdentifier(
             "flat_pokemon_type_" + type.type.name.lowercase(Locale.getDefault()),
             "color",
             context.packageName
         )
 
-        button.setBackgroundColor(identifier)
+        textView.setBackgroundColor(identifier)
 
     }
 
