@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="344dp"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:background="@color/surface_1">
 
     <TextView
-        android:id="@+id/abillities"
+        android:id="@+id/abilities"
         style="@style/Headline2DarkCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:text="@string/abilities"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,18 +23,44 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/abillities"
+        app:layout_constraintTop_toBottomOf="@id/abilities"
         app:layout_constraintWidth_percent="0.5">
 
-        <TextView
-            style="@style/InputTextDarkCenter"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Overgrow" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/first_ability"
+                style="@style/InputTextDarkCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/first_ability_hidden"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Chlorophyll" />
+
+            <TextView
+                android:text="@string/hidden_ability"
+                android:id="@+id/first_ability_hidden"
+                style="@style/AssistiveColdGrayCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Hidden Ability" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +68,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/abillities"
+        app:layout_constraintTop_toBottomOf="@id/abilities"
         app:layout_constraintWidth_percent="0.5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,19 +81,20 @@
 
 
             <TextView
-                android:id="@+id/label2"
+                android:id="@+id/second_ability"
                 style="@style/InputTextDarkCenter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/label3"
+                app:layout_constraintBottom_toTopOf="@id/second_ability_hidden"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Chlorophyll" />
 
             <TextView
-                android:id="@+id/label3"
+                android:text="@string/hidden_ability"
+                android:id="@+id/second_ability_hidden"
                 style="@style/AssistiveColdGrayCenter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

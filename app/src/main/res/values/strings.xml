@@ -119,4 +119,8 @@
     <string name="type">Type</string>
     <string name="height">Height</string>
     <string name="weight">Weight</string>
+    <string name="abilities">Abilities</string>
+    <string name="hidden_ability">Hidden ability</string>
+    <string name="stats">Stats</string>
+    <string name="total">Total:</string>
 </resources>

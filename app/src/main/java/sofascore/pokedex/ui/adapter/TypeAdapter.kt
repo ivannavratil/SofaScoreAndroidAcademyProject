@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.Util.capitalize
@@ -20,26 +19,10 @@ class TypeAdapter(
 
     inner class TypeHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: PokemonTypeRecyclerItemBinding = PokemonTypeRecyclerItemBinding.bind(view)
-
-        init {
-            view.setOnClickListener {
-                onClick(data[adapterPosition], view.context)
-            }
-        }
-
-        private fun onClick(pokemon: DetailPokemonResponse.Type, context: Context) {
-//            val intent = Intent(context, DetailPokemonActivity()::class.java)
-//
-//            intent.putExtra(DetailPokemonActivity.pokemonById, pokemon.id)
-//            context.startActivity(intent)
-        }
     }
 
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): TypeHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.pokemon_type_recycler_item, parent, false)
         return TypeHolder(view)
@@ -62,7 +45,6 @@ class TypeAdapter(
 
 
         button.setBackgroundColor(identifier)
-
 
 
     }

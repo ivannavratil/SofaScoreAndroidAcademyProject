@@ -2,19 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pokemon_stats"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/surface_1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp">
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
-            android:id="@+id/pokemon_stats"
+            android:text="@string/stats"
+            android:id="@+id/pokemon_stats_title"
             style="@style/Headline2DarkCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,16 +32,18 @@
             tools:text="Stats" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="20dp"
             android:id="@+id/stats_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pokemon_stats">
+            app:layout_constraintTop_toBottomOf="@id/pokemon_stats_title">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginStart="8dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +51,7 @@
             app:layout_constraintTop_toBottomOf="@id/stats_recycler">
 
             <TextView
+                android:text="@string/total"
                 android:id="@+id/total"
                 style="@style/BodyColdGrayLeft"
                 android:layout_width="wrap_content"
@@ -51,11 +61,11 @@
                 tools:text="Total:" />
 
             <TextView
-                android:id="@+id/value"
+                android:id="@+id/total_value"
                 style="@style/Headline3ColdGrayRight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="88dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

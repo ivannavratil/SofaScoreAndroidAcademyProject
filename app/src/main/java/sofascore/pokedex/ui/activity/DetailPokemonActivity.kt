@@ -1,6 +1,7 @@
 package sofascore.pokedex.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import sofascore.pokedex.Util
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.ActivityDetailPokemonBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
+import sofascore.pokedex.ui.adapter.StatsAdapter
 import sofascore.pokedex.ui.adapter.TypeAdapter
 import sofascore.pokedex.ui.viewmodel.DetailPokemonViewModel
 
@@ -35,16 +37,28 @@ class DetailPokemonActivity : AppCompatActivity() {
             applicationContext
         )
 
+
         val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecyler
         typeRecycler.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+
+        val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
+        statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+
+
         detailPokemonViewModel.detailPokemon.observe(this, {
             setupUI(it)
 
+            val typeAdapter = TypeAdapter(it.types, this)
+            typeRecycler.adapter = typeAdapter
 
-            val adapter = TypeAdapter(it.types, this)
-            typeRecycler.adapter = adapter
+            val statsAdapter = StatsAdapter(it.stats, this)
+            binding.pokemonDetails.pokemonStats.totalValue.text = it.stats.map { a -> a.baseStat }.sum().toString()
+
+            statsRecycler.adapter = statsAdapter
+
         })
 
 
@@ -54,13 +68,35 @@ class DetailPokemonActivity : AppCompatActivity() {
 
         binding.toolbar.setNavigationOnClickListener { finish() }
 
+        setupMainInfo(detailPokemon)
+        setupWeightAndHeight(detailPokemon)
 
+        setupAbilities(detailPokemon)
+
+
+    }
+
+    private fun setupAbilities(detailPokemon: DetailPokemonResponse) {
+        val abilities = binding.pokemonDetails.pokemonAbilities;
+        val abilities1 = detailPokemon.abilities;
+
+        abilities.firstAbility.text = abilities1[0].ability.name.capitalize()
+        abilities.secondAbilityHidden.visibility =
+            if (abilities1[0].isHidden) View.GONE else View.VISIBLE
+
+        abilities.secondAbility.text = abilities1[1].ability.name.capitalize()
+        abilities.secondAbilityHidden.visibility =
+            if (abilities1[1].isHidden) View.GONE else View.VISIBLE
+    }
+
+    private fun setupMainInfo(detailPokemon: DetailPokemonResponse) {
         binding.realTitle.text = detailPokemon.name.capitalize()
         binding.pokemonDetails.pokemonMain.pokemonName.text = detailPokemon.name.capitalize()
         binding.pokemonDetails.pokemonMain.pokedexVal.text = detailPokemon.getFormattedId()
         binding.pokemonDetails.pokemonMain.pokemonPhoto.load(detailPokemon.getAvatarUrl())
+    }
 
-
+    private fun setupWeightAndHeight(detailPokemon: DetailPokemonResponse) {
         val pokemonHeightWeight = binding.pokemonDetails.pokemonHeightWeight;
         pokemonHeightWeight.includedHeight.image.load(R.drawable.ic_height)
         pokemonHeightWeight.includedHeight.attKey.text = resources.getString(R.string.height)
@@ -70,7 +106,5 @@ class DetailPokemonActivity : AppCompatActivity() {
         pokemonHeightWeight.includedWeight.attKey.text = resources.getString(R.string.weight)
         pokemonHeightWeight.includedWeight.attVal.text =
             Util.weightToFormattedWeight(detailPokemon.weight)
-
-
     }
 }
