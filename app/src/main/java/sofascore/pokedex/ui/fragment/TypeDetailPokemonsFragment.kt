@@ -18,6 +18,7 @@ class TypeDetailPokemonsFragment : Fragment() {
 
     private val typeDetailViewModel: TypeDetailViewModel by viewModels()
     private lateinit var binding: TypeDetailPokemonsFragmentBinding
+    private val itemWidth = 117.0;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +28,16 @@ class TypeDetailPokemonsFragment : Fragment() {
 
         binding = TypeDetailPokemonsFragmentBinding.inflate(inflater, container, false)
 
+        setupPokemonRecycler()
+
+        typeDetailViewModel.getDetailTypeAndMove(1, requireContext())
+
+        return binding.root
+    }
+
+    private fun TypeDetailPokemonsFragment.setupPokemonRecycler() {
         binding.recyclerPokemons.layoutManager = GridLayoutManager(
-            requireContext(), calculateNoOfColumns(requireContext(), 117.0)
+            requireContext(), calculateNoOfColumns(requireContext(), itemWidth)
         )
 
         var pokemonAdapter: TypeDetailPokemonAdapter
@@ -49,11 +58,25 @@ class TypeDetailPokemonsFragment : Fragment() {
             binding.recyclerPokemons.adapter = pokemonAdapter
         }
 
-        //TODO: fix
-        typeDetailViewModel.getDetailTypeAndMove(1, requireContext())
+//        val recyclerView = binding.recyclerPokemons
+//
+//        val spacing = 4
+//
+//
+//        recyclerView.setPadding(spacing, spacing, spacing, spacing)
+//        recyclerView.clipToPadding = false
+//        recyclerView.clipChildren = false
+//        recyclerView.addItemDecoration(object : ItemDecoration() {
+//            override fun getItemOffsets(
+//                outRect: Rect,
+//                view: View,
+//                parent: RecyclerView,
+//                state: RecyclerView.State
+//            ) {
+//                outRect.set(spacing, spacing, spacing, spacing);
+//            }
+//        })
 
-
-        return binding.root
     }
 
     fun calculateNoOfColumns(
