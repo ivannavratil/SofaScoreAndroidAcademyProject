@@ -488,7 +488,11 @@ data class DetailPokemonResponse(
     }
 
     fun getFormattedId(): String {
-        return "0".repeat(3 - id.toString().length) + id
+        return if (id.toString().length >= 3) {
+            id.toString()
+        } else {
+            "0".repeat(3 - id.toString().length) + id
+        }
     }
 
     fun getAvatarUrl(): String {

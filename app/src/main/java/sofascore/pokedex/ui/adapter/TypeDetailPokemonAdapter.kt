@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
+import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.TypeDetailPokemonRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.model.TypeDetailResponse
@@ -54,7 +55,7 @@ class TypeDetailPokemonAdapter(
     ) {
         val type = data[position];
 
-        holder.binding.pokemonName.text = type.pokemon.name
+        holder.binding.pokemonName.text = type.pokemon.name.capitalize()
         holder.binding.pokemonPhoto.load(Pokemon.getAvatarUrl(Util.getId(type.pokemon.url)))
 
     }

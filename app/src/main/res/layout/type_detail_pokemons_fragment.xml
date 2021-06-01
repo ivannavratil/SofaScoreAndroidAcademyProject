@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surface_0"
     tools:context=".ui.fragment.TypeDetailPokemonsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_pokemons"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp" />
 
 </FrameLayout>
