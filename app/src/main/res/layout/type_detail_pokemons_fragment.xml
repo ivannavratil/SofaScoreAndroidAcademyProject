@@ -10,8 +10,8 @@
         android:id="@+id/recycler_pokemons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:padding="@dimen/type_detail_pokemon_recycler_offset" />
 
 </FrameLayout>
