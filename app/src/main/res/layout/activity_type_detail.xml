@@ -42,10 +42,14 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/flat_pokemon_type_grass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:tabBackground="@color/flat_pokemon_type_grass"
+        app:tabGravity="center"
+        app:tabMaxWidth="0dp"
+        app:tabMode="auto"
         app:tabTextColor="@color/surface_1" />
 
 
