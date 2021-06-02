@@ -1,6 +1,7 @@
 package sofascore.pokedex.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
+import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.adapter.PagedPokemonAdapter.PokemonViewHolder
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
@@ -21,9 +23,20 @@ class PagedPokemonAdapter(
 ) :
     PagedListAdapter<Pokemon, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
 
-
     class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = FragmentSearchRecyclerItemBinding.bind(view)
+
+        init {
+            view.setOnClickListener {
+                onClick(Integer.parseInt(binding.pokemonNum.text as String), view.context)
+            }
+        }
+
+        private fun onClick(id: Int, context: Context) {
+            val intent = Intent(context, DetailPokemonActivity()::class.java)
+            intent.putExtra(DetailPokemonActivity.pokemonById, id)
+            context.startActivity(intent)
+        }
 
         fun bindPokemons(
             pokemon: Pokemon,
