@@ -25,40 +25,19 @@ data class TypeDetailResponse(
 ) {
     data class DamageRelations(
         @SerializedName("double_damage_from")
-        val doubleDamageFrom: List<DoubleDamageFrom>,
+        val doubleDamageFrom: List<Damage>,
         @SerializedName("double_damage_to")
-        val doubleDamageTo: List<DoubleDamageTo>,
+        val doubleDamageTo: List<Damage>,
         @SerializedName("half_damage_from")
-        val halfDamageFrom: List<HalfDamageFrom>,
+        val halfDamageFrom: List<Damage>,
         @SerializedName("half_damage_to")
-        val halfDamageTo: List<HalfDamageTo>,
+        val halfDamageTo: List<Damage>,
         @SerializedName("no_damage_from")
-        val noDamageFrom: List<Any>,
+        val noDamageFrom: List<Damage>,
         @SerializedName("no_damage_to")
-        val noDamageTo: List<Any>
+        val noDamageTo: List<Damage>
     ) {
-        data class DoubleDamageFrom(
-            @SerializedName("name")
-            val name: String, // flying
-            @SerializedName("url")
-            val url: String // https://pokeapi.co/api/v2/type/3/
-        )
-
-        data class DoubleDamageTo(
-            @SerializedName("name")
-            val name: String, // ground
-            @SerializedName("url")
-            val url: String // https://pokeapi.co/api/v2/type/5/
-        )
-
-        data class HalfDamageFrom(
-            @SerializedName("name")
-            val name: String, // ground
-            @SerializedName("url")
-            val url: String // https://pokeapi.co/api/v2/type/5/
-        )
-
-        data class HalfDamageTo(
+        data class Damage(
             @SerializedName("name")
             val name: String, // flying
             @SerializedName("url")
