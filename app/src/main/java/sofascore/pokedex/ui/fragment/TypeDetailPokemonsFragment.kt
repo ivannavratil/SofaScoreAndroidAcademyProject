@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DimenRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
@@ -21,7 +21,7 @@ import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
 
 class TypeDetailPokemonsFragment : Fragment() {
 
-    private val typeDetailViewModel: TypeDetailViewModel by viewModels()
+    private val typeDetailViewModel: TypeDetailViewModel by activityViewModels()
     private lateinit var binding: TypeDetailPokemonsFragmentBinding
     private val itemWidth = 117.0;
 
@@ -35,8 +35,6 @@ class TypeDetailPokemonsFragment : Fragment() {
 
         setupPokemonRecycler()
 
-        typeDetailViewModel.getDetailTypeAndMove(1, requireContext())
-
         return binding.root
     }
 
@@ -48,14 +46,6 @@ class TypeDetailPokemonsFragment : Fragment() {
 
         var pokemonAdapter: TypeDetailPokemonAdapter
 
-        if (typeDetailViewModel.typeDetail.value != null) {
-            pokemonAdapter = TypeDetailPokemonAdapter(
-                typeDetailViewModel.typeDetail.value!!.pokemon,
-                requireContext(),
-            )
-            binding.recyclerPokemons.adapter = pokemonAdapter
-        }
-
         typeDetailViewModel.typeDetail.observe(viewLifecycleOwner) {
             pokemonAdapter = TypeDetailPokemonAdapter(
                 it.pokemon,
@@ -64,17 +54,16 @@ class TypeDetailPokemonsFragment : Fragment() {
             binding.recyclerPokemons.adapter = pokemonAdapter
         }
 
-
         val itemDecoration = ItemOffsetDecoration(requireContext(), R.dimen.type_detail_pokemon_recycler_offset);
         binding.recyclerPokemons.addItemDecoration(itemDecoration);
 
     }
 
-    fun calculateNoOfColumns(
+    private fun calculateNoOfColumns(
         context: Context,
         columnWidthDp: Double
     ): Int {
-        val displayMetrics: DisplayMetrics = context.getResources().getDisplayMetrics()
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         return (screenWidthDp / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
     }
