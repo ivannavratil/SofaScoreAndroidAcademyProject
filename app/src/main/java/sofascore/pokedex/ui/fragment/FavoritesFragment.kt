@@ -19,17 +19,16 @@ import java.util.*
 class FavoritesFragment : Fragment() {
 
     private val favoriteViewModel: FavoriteViewModel by viewModels()
-    private var _binding: FragmentFavoritesBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentFavoritesBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
 
         binding.recyclerViewFavorite.layoutManager = LinearLayoutManager(requireContext())
 
@@ -61,7 +60,7 @@ class FavoritesFragment : Fragment() {
             itemTouchHelper.attachToRecyclerView(null)
         }
 
-        return root
+        return binding.root
     }
 
 
@@ -98,11 +97,6 @@ class FavoritesFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
         }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
     override fun onResume() {
         super.onResume()
