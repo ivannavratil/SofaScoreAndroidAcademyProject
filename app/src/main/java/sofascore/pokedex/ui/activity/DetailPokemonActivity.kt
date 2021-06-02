@@ -3,6 +3,7 @@ package sofascore.pokedex.ui.activity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -71,10 +72,8 @@ class DetailPokemonActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerViews(): Triple<RecyclerView, RecyclerView, RecyclerView> {
-        val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecyler
-        typeRecycler.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
+        val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecycler
+        typeRecycler.layoutManager = GridLayoutManager(this, 2)
 
         val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
         statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

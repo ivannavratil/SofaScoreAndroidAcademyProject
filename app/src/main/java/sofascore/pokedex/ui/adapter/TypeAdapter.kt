@@ -5,7 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
@@ -52,7 +52,7 @@ class TypeAdapter(
     ) {
         val type = data[position];
 
-        val textView: TextView = holder.binding.type;
+        val textView: AppCompatButton = holder.binding.type;
         textView.text = type.type.name.capitalize()
 
 
@@ -63,7 +63,12 @@ class TypeAdapter(
             context.packageName
         )
 
-        textView.setBackgroundColor(identifier)
+//        val unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.rounded_corner)
+//        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+//        DrawableCompat.setTint(wrappedDrawable, Color.RED)
+
+        //holder.binding.type.setBackgroundColor(context.resources.getColor(R.color.flat_pokemon_type_grass))
+        //textView.setBackgroundColor(identifier)
 
     }
 

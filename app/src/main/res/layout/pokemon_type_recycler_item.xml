@@ -1,25 +1,10 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="69dp"
-    android:layout_height="32dp">
-
-    <TextView
-        android:background="@color/flat_pokemon_type_grass"
-        android:id="@+id/type"
-        style="@style/Headline3Surface1Left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:height="76dp"
-        android:singleLine="true"
-        android:textColor="@color/surface_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Test" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-
+<androidx.appcompat.widget.AppCompatButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:backgroundTint="@color/tint_primary"
+    android:id="@+id/type"
+    style="@style/Headline3Surface1Left"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corner"
+    android:minHeight="0dp"
+    android:text="Hello World!" />
 
