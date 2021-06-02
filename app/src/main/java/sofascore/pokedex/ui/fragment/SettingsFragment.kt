@@ -1,6 +1,5 @@
 package sofascore.pokedex.ui.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -14,16 +13,13 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import org.intellij.lang.annotations.Language
 import sofascore.pokedex.LanguageHelper
+import sofascore.pokedex.PopUpClass
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.FragmentSettingsBinding
 import sofascore.pokedex.ui.activity.AboutActivity
 import sofascore.pokedex.ui.activity.MainActivity
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
-import sofascore.pokedex.ui.viewmodel.NotificationsViewModel
 
 const val LANGUAGE_EN = "en"
 const val LANGUAGE_HR = "hr"
@@ -47,20 +43,17 @@ class SettingsFragment : Fragment() {
 
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
-
-
         binding.moreInfo.setOnClickListener {
             val intent = Intent(requireContext(), AboutActivity()::class.java)
             startActivity(intent)
         }
 
         binding.clearFavourites.setOnClickListener {
-            favoriteViewModel.clearFavouritePokemons()
+            val popup = PopUpClass()
+            popup.showPopupWindow(it, favoriteViewModel)
         }
 
-
         val spinner: Spinner = binding.language
-
 
         val currentLanguageCode = LanguageHelper.getPreferredLanguage(requireContext())
 
@@ -78,7 +71,6 @@ class SettingsFragment : Fragment() {
         }
 
 
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -86,8 +78,6 @@ class SettingsFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-
-
                 if (firstSelection) {
                     firstSelection = false
                 } else {
@@ -98,26 +88,12 @@ class SettingsFragment : Fragment() {
                         restartApp()
                     }
                 }
-
-
-
-
-
-
-
-
-
-
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 //TODO("Not yet implemented")
             }
-
         }
-
-
         return binding.root
     }
 

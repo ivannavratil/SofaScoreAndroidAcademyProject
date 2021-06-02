@@ -124,4 +124,8 @@
     <string name="hidden_ability">Hidden ability</string>
     <string name="stats">Stats</string>
     <string name="total">Total:</string>
+    <string name="clear">clear</string>
+    <string name="cancel">cancel</string>
+    <string name="favorites_list_is_clear">Favorites list is clear.</string>
+    <string name="clear_favorites_list">Clear favorites list?</string>
 </resources>
