@@ -128,4 +128,12 @@
     <string name="cancel">cancel</string>
     <string name="favorites_list_is_clear">Favorites list is clear.</string>
     <string name="clear_favorites_list">Clear favorites list?</string>
+    <string name="offensive">Offensive</string>
+    <string name="defensive">Defensive</string>
+    <string name="power">Power</string>
+    <string name="types">Types</string>
+    <string name="_2x">2x</string>
+    <string name="zerox">0x</string>
+    <string name="twox">2x</string>
+    <string name="onehalfx">1/2x</string>
 </resources>

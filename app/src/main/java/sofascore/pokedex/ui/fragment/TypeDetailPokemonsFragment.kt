@@ -3,7 +3,6 @@ package sofascore.pokedex.ui.fragment
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import sofascore.pokedex.R
+import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.TypeDetailPokemonsFragmentBinding
 import sofascore.pokedex.ui.adapter.TypeDetailPokemonAdapter
 import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
@@ -41,7 +41,7 @@ class TypeDetailPokemonsFragment : Fragment() {
     private fun setupPokemonRecycler() {
 
         binding.recyclerPokemons.layoutManager = GridLayoutManager(
-            requireContext(), calculateNoOfColumns(requireContext(), itemWidthWithMargin)
+            requireContext(), Util.calculateNoOfColumns(requireContext(), itemWidthWithMargin)
         )
 
         var pokemonAdapter: TypeDetailPokemonAdapter
@@ -54,19 +54,12 @@ class TypeDetailPokemonsFragment : Fragment() {
             binding.recyclerPokemons.adapter = pokemonAdapter
         }
 
-        val itemDecoration = ItemOffsetDecoration(requireContext(), R.dimen.type_detail_pokemon_recycler_offset);
+        val itemDecoration =
+            ItemOffsetDecoration(requireContext(), R.dimen.type_detail_pokemon_recycler_offset);
         binding.recyclerPokemons.addItemDecoration(itemDecoration);
 
     }
 
-    private fun calculateNoOfColumns(
-        context: Context,
-        columnWidthDp: Double
-    ): Int {
-        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
-        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
-        return (screenWidthDp / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
-    }
 
     class ItemOffsetDecoration(private val mItemOffset: Int) : ItemDecoration() {
         constructor(
