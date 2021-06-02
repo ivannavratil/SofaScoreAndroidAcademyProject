@@ -1,5 +1,7 @@
 package sofascore.pokedex
 
+import android.content.Context
+import android.util.DisplayMetrics
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -52,6 +54,15 @@ object Util {
 
     fun String.capitalize(): String {
         return this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() };
+    }
+
+    fun calculateNoOfColumns(
+        context: Context,
+        columnWidthDp: Double
+    ): Int {
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+        return (screenWidthDp / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
     }
 
 }
