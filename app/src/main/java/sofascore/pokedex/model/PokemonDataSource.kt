@@ -66,7 +66,7 @@ class PokemonDataSource(
                     if (fav == null) null
                     else AppDatabase.getDatabase(application).PokemonDao().getFavouriteNumber(id)
 
-                Pokemon(id, it.name, it.url, fav ?: false, favNumber)
+                Pokemon(id, it.name, fav ?: false, favNumber)
             }.toList()
         return Pair(response, pokemonList)
     }

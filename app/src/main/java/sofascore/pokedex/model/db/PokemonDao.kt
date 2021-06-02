@@ -8,7 +8,7 @@ import sofascore.pokedex.model.Pokemon
 interface PokemonDao : BaseDao<Pokemon> {
 
     @Query("SELECT * FROM Pokemon WHERE p_id = :id")
-    suspend fun getPokemonById(id: Int): Pokemon
+    suspend fun getPokemonById(id: Int): Pokemon?
 
     @Query("SELECT * FROM Pokemon WHERE p_favourite = 1 ORDER BY p_favourite_number")
     suspend fun getAllFavoritePokemonsSorted(): List<Pokemon>

@@ -10,7 +10,6 @@ data class Pokemon(
     @PrimaryKey
     @ColumnInfo(name = "p_id") var id: Int,
     @ColumnInfo(name = "p_name") var name: String,
-    @ColumnInfo(name = "p_url") var url: String,
     @ColumnInfo(name = "p_favourite") var favourite: Boolean,
     @ColumnInfo(name = "p_favourite_number") var favouriteNumber: Int?
 ) : Serializable {

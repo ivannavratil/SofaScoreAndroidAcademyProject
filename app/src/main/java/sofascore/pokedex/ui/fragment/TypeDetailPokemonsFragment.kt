@@ -23,7 +23,7 @@ class TypeDetailPokemonsFragment : Fragment() {
 
     private val typeDetailViewModel: TypeDetailViewModel by activityViewModels()
     private lateinit var binding: TypeDetailPokemonsFragmentBinding
-    private val itemWidth = 117.0;
+    private val itemWidthWithMargin = 117.0;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +41,7 @@ class TypeDetailPokemonsFragment : Fragment() {
     private fun setupPokemonRecycler() {
 
         binding.recyclerPokemons.layoutManager = GridLayoutManager(
-            requireContext(), calculateNoOfColumns(requireContext(), itemWidth)
+            requireContext(), calculateNoOfColumns(requireContext(), itemWidthWithMargin)
         )
 
         var pokemonAdapter: TypeDetailPokemonAdapter

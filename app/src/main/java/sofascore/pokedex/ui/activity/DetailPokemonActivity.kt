@@ -62,13 +62,9 @@ class DetailPokemonActivity : AppCompatActivity() {
 
 
         binding.pokemonFavorite.setOnClickListener {
-            detailPokemonViewModel.detailPokemon.value?.let {
-                detailPokemonViewModel.favourite.value?.let { _ ->
-                    detailPokemonViewModel.flipFavourite(
-                        applicationContext
-                    )
-                }
-            }
+            detailPokemonViewModel.flipFavourite(
+                applicationContext
+            )
         }
 
 
