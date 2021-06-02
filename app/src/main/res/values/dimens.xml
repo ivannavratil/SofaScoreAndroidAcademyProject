@@ -8,4 +8,5 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="type_detail_pokemon_recycler_offset">8dp</dimen>
+    <dimen name="pokemon_details_card_radius">6dp</dimen>
 </resources>

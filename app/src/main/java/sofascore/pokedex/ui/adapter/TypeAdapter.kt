@@ -2,6 +2,7 @@ package sofascore.pokedex.ui.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,12 +64,8 @@ class TypeAdapter(
             context.packageName
         )
 
-//        val unwrappedDrawable = AppCompatResources.getDrawable(context, R.drawable.rounded_corner)
-//        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
-//        DrawableCompat.setTint(wrappedDrawable, Color.RED)
-
-        //holder.binding.type.setBackgroundColor(context.resources.getColor(R.color.flat_pokemon_type_grass))
-        //textView.setBackgroundColor(identifier)
+        holder.binding.type.backgroundTintList =
+            ColorStateList.valueOf(context.resources.getColor(identifier));
 
     }
 

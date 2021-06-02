@@ -5,4 +5,21 @@
             <corners android:radius="10dp" />
         </shape>
     </item>
+
+    <!-- State Pressed-->
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+    <!-- State Enabled -->
+    <item android:state_enabled="true">
+        <shape>
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
 </selector>
+
+
+

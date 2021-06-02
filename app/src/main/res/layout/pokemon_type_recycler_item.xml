@@ -1,10 +1,11 @@
 <androidx.appcompat.widget.AppCompatButton xmlns:android="http://schemas.android.com/apk/res/android"
-    android:backgroundTint="@color/tint_primary"
     android:id="@+id/type"
     style="@style/Headline3Surface1Left"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corner"
-    android:minHeight="0dp"
-    android:text="Hello World!" />
+    android:minWidth="69dp"
+    android:minHeight="32dp"
+    android:text="Hello World!"
+    android:textAllCaps="false" />
 
