@@ -22,6 +22,7 @@ class TypeDetailDamageOverviewFragment : Fragment() {
 
     private val itemTypeWidth = 85.0;
     private val nonRecyclerWidth = 86
+    private val cardBackgroundOpacity = 26
 
 
     override fun onCreateView(
@@ -52,15 +53,17 @@ class TypeDetailDamageOverviewFragment : Fragment() {
         binding.defensive.rows.zerox.times.text = getString(R.string.zerox)
 
 
-        binding.offensive.rows.twox.topCard.setCardBackgroundColor(
-            ResourcesCompat.getColor(
-                resources,
-                R.color.success,
-                null
-            )
-        )
-        binding.offensive.rows.twox.topCard.background.alpha = 25
-        //ResourcesCompat.getDrawable(resources,R.color.success,null)
+        binding.offensive.rows.twox.topCard.setCardBackgroundColor(getColor(R.color.success))
+        binding.offensive.rows.twox.topCard.background.alpha = cardBackgroundOpacity
+        binding.offensive.rows.onehalfx.topCard.setCardBackgroundColor(getColor(R.color.error))
+        binding.offensive.rows.onehalfx.topCard.background.alpha = cardBackgroundOpacity
+        binding.offensive.rows.zerox.topCard.setCardBackgroundColor(getColor(R.color.surface_2))
+
+        binding.defensive.rows.twox.topCard.setCardBackgroundColor(getColor(R.color.success))
+        binding.defensive.rows.twox.topCard.background.alpha = cardBackgroundOpacity
+        binding.defensive.rows.onehalfx.topCard.setCardBackgroundColor(getColor(R.color.error))
+        binding.defensive.rows.onehalfx.topCard.background.alpha = cardBackgroundOpacity
+        binding.defensive.rows.zerox.topCard.setCardBackgroundColor(getColor(R.color.surface_2))
 
 
         binding.offensive.rows.twox.times.setTextColor(resources.getColor(R.color.success))
@@ -70,9 +73,6 @@ class TypeDetailDamageOverviewFragment : Fragment() {
         binding.defensive.rows.twox.times.setTextColor(resources.getColor(R.color.success))
         binding.defensive.rows.onehalfx.times.setTextColor(resources.getColor(R.color.error))
         binding.defensive.rows.zerox.times.setTextColor(resources.getColor(R.color.cold_gray))
-
-
-
 
 
 
@@ -99,6 +99,14 @@ class TypeDetailDamageOverviewFragment : Fragment() {
         return GridLayoutManager(
             requireContext(),
             Util.calculateNoOfColumns(requireContext(), itemTypeWidth, nonRecyclerWidth)
+        )
+    }
+
+    private fun getColor(colorId: Int): Int {
+        return ResourcesCompat.getColor(
+            resources,
+            colorId,
+            null
         )
     }
 
