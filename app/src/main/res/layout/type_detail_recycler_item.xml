@@ -8,7 +8,6 @@
     android:layout_marginTop="2dp"
     android:background="@drawable/rounded_corner"
     android:backgroundTint="@color/dark"
-    android:minWidth="69dp"
     android:minHeight="32dp"
     android:text="Ground"
     android:textAllCaps="false" />

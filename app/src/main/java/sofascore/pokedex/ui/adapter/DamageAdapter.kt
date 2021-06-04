@@ -12,12 +12,14 @@ import sofascore.pokedex.R
 import sofascore.pokedex.Util.capitalize
 import sofascore.pokedex.databinding.PokemonDetailDamageRecyclerItemBinding
 import sofascore.pokedex.model.TypeDetailResponse.DamageRelations.Damage
+import sofascore.pokedex.ui.fragment.TypeDetailDamageOverviewFragment.Power
 import java.util.*
 
 
 class DamageAdapter(
     private var data: List<Damage>,
     private val context: Context,
+    private val power: Power,
 ) : RecyclerView.Adapter<DamageAdapter.DamageHolder>() {
 
     init {
@@ -27,7 +29,8 @@ class DamageAdapter(
     }
 
     inner class DamageHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding: PokemonDetailDamageRecyclerItemBinding = PokemonDetailDamageRecyclerItemBinding.bind(view)
+        val binding: PokemonDetailDamageRecyclerItemBinding =
+            PokemonDetailDamageRecyclerItemBinding.bind(view)
 
     }
 
@@ -50,8 +53,32 @@ class DamageAdapter(
 
             holder.binding.type.setTextAppearance(R.style.Headline3ColdGrayLeft)
 
-            holder.binding.type.backgroundTintList =
-                ColorStateList.valueOf(Color.TRANSPARENT);
+            holder.binding.type.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT);
+
+
+            when (power) {
+                Power.ZEROX -> {
+                    holder.binding.type.setTextColor(
+                        context.resources.getColor(
+                            R.color.cold_gray,
+                            null
+                        )
+                    )
+                }
+                Power.HALFX -> holder.binding.type.setTextColor(
+                    context.resources.getColor(
+                        R.color.error,
+                        null
+                    )
+                )
+                Power.TWOX -> holder.binding.type.setTextColor(
+                    context.resources.getColor(
+                        R.color.success,
+                        null
+                    )
+                )
+            }
+
 
         } else {
 
@@ -71,6 +98,5 @@ class DamageAdapter(
     override fun getItemCount(): Int {
         return data.size
     }
-
 
 }
