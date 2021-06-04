@@ -56,8 +56,6 @@ class TypeAdapter(
         val textView: AppCompatButton = holder.binding.type;
         textView.text = type.type.name.capitalize()
 
-
-        //TODO: fix color
         val identifier = context.resources.getIdentifier(
             "flat_pokemon_type_" + type.type.name.lowercase(Locale.getDefault()),
             "color",

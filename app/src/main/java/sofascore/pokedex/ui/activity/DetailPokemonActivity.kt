@@ -22,6 +22,9 @@ class DetailPokemonActivity : AppCompatActivity() {
 
     private val detailPokemonViewModel: DetailPokemonViewModel by viewModels()
     private lateinit var binding: ActivityDetailPokemonBinding
+    private val typeItemWidth = 85.0
+    private val nonRecyclerWidth = 16+144+16
+
 
     companion object {
         const val pokemonById = "BY_ID";
@@ -73,7 +76,7 @@ class DetailPokemonActivity : AppCompatActivity() {
 
     private fun setupRecyclerViews(): Triple<RecyclerView, RecyclerView, RecyclerView> {
         val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecycler
-        typeRecycler.layoutManager = GridLayoutManager(this, 2)
+        typeRecycler.layoutManager = GridLayoutManager(this, Util.calculateNoOfColumns(this,typeItemWidth,nonRecyclerWidth))
 
         val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
         statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
