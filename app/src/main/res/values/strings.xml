@@ -136,4 +136,5 @@
     <string name="zerox">0x</string>
     <string name="twox">2x</string>
     <string name="onehalfx">1/2x</string>
+    <string name="none">None</string>
 </resources>

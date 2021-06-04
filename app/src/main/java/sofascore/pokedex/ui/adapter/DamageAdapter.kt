@@ -2,6 +2,7 @@ package sofascore.pokedex.ui.adapter
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +16,15 @@ import java.util.*
 
 
 class DamageAdapter(
-    private val data: List<Damage>,
+    private var data: List<Damage>,
     private val context: Context,
 ) : RecyclerView.Adapter<DamageAdapter.DamageHolder>() {
+
+    init {
+        if (data.isEmpty()) {
+            data = arrayListOf(Damage(context.getString(R.string.none), ""))
+        }
+    }
 
     inner class DamageHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: PokemonDamageRecyclerItemBinding = PokemonDamageRecyclerItemBinding.bind(view)
@@ -39,14 +46,25 @@ class DamageAdapter(
         val textView: AppCompatButton = holder.binding.type;
         textView.text = type.name.capitalize()
 
-        val identifier = context.resources.getIdentifier(
-            "flat_pokemon_type_" + type.name.lowercase(Locale.getDefault()),
-            "color",
-            context.packageName
-        )
+        if (type.name == context.getString(R.string.none)) {
 
-        holder.binding.type.backgroundTintList =
-            ColorStateList.valueOf(context.resources.getColor(identifier));
+            holder.binding.type.setTextAppearance(R.style.Headline3ColdGrayLeft)
+
+            holder.binding.type.backgroundTintList =
+                ColorStateList.valueOf(Color.TRANSPARENT);
+
+        } else {
+
+            val identifier = context.resources.getIdentifier(
+                "flat_pokemon_type_" + type.name.lowercase(Locale.getDefault()),
+                "color",
+                context.packageName
+            )
+
+            holder.binding.type.backgroundTintList =
+                ColorStateList.valueOf(context.resources.getColor(identifier));
+
+        }
 
     }
 
