@@ -15,9 +15,26 @@
     <string name="language_en">Engleski</string>
     <string name="language_hr">Hrvatski</string>
     <string name="type">Tip</string>
-    <string name="height">VIsina</string>
+    <string name="height">Visina</string>
     <string name="weight">Težina</string>
     <string name="pokedex_num">Broj</string>
+    <string name="DAMAGE_OVERVIEW">Pregled štete</string>
+    <string name="MOVES">Potezi</string>
+    <string name="POKEMONS">Pokemoni</string>
+    <string name="clear_my_favorites_list">Očisti listu favorita</string>
+    <string name="abilities">Sposobnosti</string>
+    <string name="hidden_ability">Skrivena sposobnost</string>
+    <string name="stats">Statistika</string>
+    <string name="total">Ukupno</string>
+    <string name="clear">Očisti</string>
+    <string name="cancel">Odustani</string>
+    <string name="favorites_list_is_clear">Lista favorita je očišćena.</string>
+    <string name="clear_favorites_list">Očisti listu favorita?</string>
+    <string name="offensive">Napad</string>
+    <string name="defensive">Obrana</string>
+    <string name="power">Snaga</string>
+    <string name="types">Tip</string>
+    <string name="none">Ništa</string>
 
 
 </resources>

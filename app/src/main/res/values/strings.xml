@@ -132,9 +132,8 @@
     <string name="defensive">Defensive</string>
     <string name="power">Power</string>
     <string name="types">Types</string>
-    <string name="_2x">2x</string>
-    <string name="zerox">0x</string>
-    <string name="twox">2x</string>
-    <string name="onehalfx">1/2x</string>
+    <string name="zerox" translatable="false">0x</string>
+    <string name="twox" translatable="false">2x</string>
+    <string name="onehalfx" translatable="false">1/2x</string>
     <string name="none">None</string>
 </resources>

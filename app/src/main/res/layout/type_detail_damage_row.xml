@@ -24,7 +24,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="4sp"
-            android:text="@string/_2x"
+            android:text="@string/twox"
             android:textColor="@color/success"
             android:textSize="20sp"
             android:textStyle="bold"
