@@ -33,10 +33,10 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             val database = AppDatabase.getDatabase(context)
 
-            if (pokemon.favourite) {
-                pokemon.favouriteNumber = null
-            } else {
-                pokemon.favouriteNumber = database.PokemonDao().getMaxFavouriteCityOrder() + 1
+
+            pokemon.favouriteNumber = when (pokemon.favourite) {
+                true -> null
+                false -> database.PokemonDao().getMaxFavouriteCityOrder() + 1
             }
 
             pokemon.favourite = !pokemon.favourite
