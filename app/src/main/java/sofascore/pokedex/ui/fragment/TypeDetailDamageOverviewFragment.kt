@@ -8,8 +8,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import sofascore.pokedex.R
+import sofascore.pokedex.Util
 import sofascore.pokedex.databinding.TypeDetailDamageOverviewFragmentBinding
 import sofascore.pokedex.ui.adapter.DamageAdapter
 import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
@@ -19,6 +19,9 @@ class TypeDetailDamageOverviewFragment : Fragment() {
     private val typeDetailViewModel: TypeDetailViewModel by activityViewModels()
 
     private lateinit var binding: TypeDetailDamageOverviewFragmentBinding
+
+    private val itemTypeWidth = 85.0;
+    private val nonRecyclerWidth = 86
 
 
     override fun onCreateView(
@@ -32,16 +35,14 @@ class TypeDetailDamageOverviewFragment : Fragment() {
 
 
         binding.offensive.title.text = getString(R.string.offensive)
-        binding.offensive.rows.twox.recycler.layoutManager =
-            StaggeredGridLayoutManager(cols, StaggeredGridLayoutManager.VERTICAL);
-        binding.offensive.rows.onehalfx.recycler.layoutManager =
-            StaggeredGridLayoutManager(cols, StaggeredGridLayoutManager.VERTICAL);
-        binding.offensive.rows.zerox.recycler.layoutManager = GridLayoutManager(context, cols);
+        binding.offensive.rows.twox.recycler.layoutManager = getRecyclerLayout()
+        binding.offensive.rows.onehalfx.recycler.layoutManager = getRecyclerLayout()
+        binding.offensive.rows.zerox.recycler.layoutManager = getRecyclerLayout()
 
         binding.defensive.title.text = getString(R.string.defensive)
-        binding.defensive.rows.twox.recycler.layoutManager = GridLayoutManager(context, cols);
-        binding.defensive.rows.onehalfx.recycler.layoutManager = GridLayoutManager(context, cols);
-        binding.defensive.rows.zerox.recycler.layoutManager = GridLayoutManager(context, cols);
+        binding.defensive.rows.twox.recycler.layoutManager = getRecyclerLayout()
+        binding.defensive.rows.onehalfx.recycler.layoutManager = getRecyclerLayout()
+        binding.defensive.rows.zerox.recycler.layoutManager = getRecyclerLayout()
 
         binding.offensive.rows.twox.times.text = getString(R.string.twox)
         binding.offensive.rows.onehalfx.times.text = getString(R.string.onehalfx)
@@ -92,6 +93,13 @@ class TypeDetailDamageOverviewFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    private fun getRecyclerLayout(): GridLayoutManager {
+        return GridLayoutManager(
+            requireContext(),
+            Util.calculateNoOfColumns(requireContext(), itemTypeWidth, nonRecyclerWidth)
+        )
     }
 
 

@@ -3,9 +3,10 @@
     style="@style/Headline3Surface1Left"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="4dp"
     android:background="@drawable/rounded_corner"
     android:minWidth="69dp"
     android:minHeight="32dp"
     android:text="Hello World!"
     android:textAllCaps="false" />
-

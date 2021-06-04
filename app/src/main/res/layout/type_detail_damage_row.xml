@@ -5,8 +5,8 @@
     android:id="@+id/top_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/damage_card_radius"
-    android:layout_marginTop="4dp">
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="@dimen/damage_card_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,10 +14,10 @@
         android:minHeight="64dp">
 
         <TextView
-            android:layout_marginStart="12dp"
             android:id="@+id/times"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="4sp"
             android:text="@string/_2x"
@@ -29,12 +29,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:id="@+id/recycler"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="70dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

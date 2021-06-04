@@ -58,11 +58,21 @@ object Util {
 
     fun calculateNoOfColumns(
         context: Context,
-        columnWidthDp: Double
+        itemWidth: Double
     ): Int {
         val displayMetrics: DisplayMetrics = context.resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
-        return (screenWidthDp / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
+        return (screenWidthDp / itemWidth + 0.5).toInt() // +0.5 for correct rounding to int.
+    }
+
+    fun calculateNoOfColumns(
+        context: Context,
+        itemWidth: Double,
+        adjustContext: Int,
+    ): Int {
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+        return ((screenWidthDp - adjustContext) / itemWidth + 0.5).toInt() // +0.5 for correct rounding to int.
     }
 
 }
