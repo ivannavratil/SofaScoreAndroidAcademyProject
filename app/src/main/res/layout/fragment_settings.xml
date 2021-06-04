@@ -104,12 +104,12 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:clickable="true"
             android:id="@+id/clear_favorites"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/button_error_background"
+            android:clickable="true"
             android:text="@string/clear_my_favorites_list"
             android:textColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
