@@ -10,7 +10,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
+import sofascore.pokedex.databinding.PokemonSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.adapter.PagedPokemonAdapter.PokemonViewHolder
@@ -24,7 +24,7 @@ class PagedPokemonAdapter(
     PagedListAdapter<Pokemon, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
 
     class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = FragmentSearchRecyclerItemBinding.bind(view)
+        private val binding = PokemonSearchRecyclerItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
@@ -71,7 +71,7 @@ class PagedPokemonAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_search_recycler_item, parent, false)
+            .inflate(R.layout.pokemon_search_recycler_item, parent, false)
         return PokemonViewHolder(view)
     }
 

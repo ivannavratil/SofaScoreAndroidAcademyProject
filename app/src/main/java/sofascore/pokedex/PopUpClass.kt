@@ -16,7 +16,7 @@ class PopUpClass {
     fun showPopupWindow(view: View, favoriteViewModel: FavoriteViewModel) {
 
         val popupView: View =
-            LayoutInflater.from(view.context).inflate(R.layout.clear_favorites_popup, null);
+            LayoutInflater.from(view.context).inflate(R.layout.settings_clear_favorites_popup, null);
 
         //Specify the length and width through constants
         val width = LinearLayout.LayoutParams.MATCH_PARENT

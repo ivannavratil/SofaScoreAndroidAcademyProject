@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.Util.capitalize
-import sofascore.pokedex.databinding.PokemonDamageRecyclerItemBinding
+import sofascore.pokedex.databinding.PokemonDetailDamageRecyclerItemBinding
 import sofascore.pokedex.model.TypeDetailResponse.DamageRelations.Damage
 import java.util.*
 
@@ -27,13 +27,13 @@ class DamageAdapter(
     }
 
     inner class DamageHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding: PokemonDamageRecyclerItemBinding = PokemonDamageRecyclerItemBinding.bind(view)
+        val binding: PokemonDetailDamageRecyclerItemBinding = PokemonDetailDamageRecyclerItemBinding.bind(view)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DamageAdapter.DamageHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.pokemon_type_recycler_item, parent, false)
+            .inflate(R.layout.type_detail_recycler_item, parent, false)
         return DamageHolder(view)
     }
 

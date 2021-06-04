@@ -74,7 +74,7 @@
 
     <include
         android:id="@+id/pokemon_details"
-        layout="@layout/pokemon_content_scrolling" />
+        layout="@layout/pokemon_detail_content_scrolling" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

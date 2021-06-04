@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.Util
 import sofascore.pokedex.Util.capitalize
-import sofascore.pokedex.databinding.PokemonTypeRecyclerItemBinding
+import sofascore.pokedex.databinding.TypeDetailRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
 import sofascore.pokedex.ui.activity.TypeDetailActivity
 import java.util.*
@@ -23,7 +23,7 @@ class TypeAdapter(
 ) : RecyclerView.Adapter<TypeAdapter.TypeHolder>() {
 
     inner class TypeHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding: PokemonTypeRecyclerItemBinding = PokemonTypeRecyclerItemBinding.bind(view)
+        val binding: TypeDetailRecyclerItemBinding = TypeDetailRecyclerItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
@@ -43,7 +43,7 @@ class TypeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeAdapter.TypeHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.pokemon_type_recycler_item, parent, false)
+            .inflate(R.layout.type_detail_recycler_item, parent, false)
         return TypeHolder(view)
     }
 

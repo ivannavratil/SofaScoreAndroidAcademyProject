@@ -48,7 +48,7 @@ class SettingsFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.clearFavourites.setOnClickListener {
+        binding.clearFavorites.setOnClickListener {
             val popup = PopUpClass()
             popup.showPopupWindow(it, favoriteViewModel)
         }

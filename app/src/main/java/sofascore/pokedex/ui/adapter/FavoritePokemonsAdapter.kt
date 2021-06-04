@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.databinding.FragmentSearchRecyclerItemBinding
+import sofascore.pokedex.databinding.PokemonSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
@@ -30,7 +30,7 @@ class FavoritePokemonsAdapter(
     }
 
     inner class PokemonHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = FragmentSearchRecyclerItemBinding.bind(view)
+        val binding = PokemonSearchRecyclerItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
@@ -52,7 +52,7 @@ class FavoritePokemonsAdapter(
         viewType: Int
     ): PokemonHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_search_recycler_item, parent, false)
+            .inflate(R.layout.pokemon_search_recycler_item, parent, false)
         return PokemonHolder(view)
     }
 
