@@ -1,5 +1,6 @@
 package sofascore.pokedex.ui.activity
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -90,6 +91,7 @@ class DetailPokemonActivity : AppCompatActivity() {
     private fun setupUI(detailPokemon: DetailPokemonResponse) {
 
         binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbar.navigationIcon!!.setTint(Color.BLACK)
 
         setupMainInfo(detailPokemon)
         setupWeightAndHeight(detailPokemon)
