@@ -25,5 +25,8 @@ interface PokedexService {
     @GET("move/{id}")
     suspend fun getMoveDetail(@Path("id") id: Int): TypeDetailMoveResponse
 
+    @GET("pokemon/?offset=0&limit=10000")
+    suspend fun allPokemons():AllPokemonsResponse
+
 
 }

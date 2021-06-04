@@ -1,6 +1,7 @@
 package sofascore.pokedex.model
 
 import com.google.gson.annotations.SerializedName
+import sofascore.pokedex.Util.capitalize
 
 data class AllPokemonsResponse(
     val count: Int, // 1118
@@ -14,4 +15,13 @@ data class AllPokemonsResponse(
 data class PokemonNamePhoto(
     val name: String, // bulbasaur
     val url: String // https://pokeapi.co/api/v2/pokemon/1/
-)
+
+
+) {
+    //TODO: fix
+    override fun toString(): String {
+        return name.capitalize()
+    }
+
+
+}
