@@ -11,13 +11,24 @@ import java.util.*
 
 
 class TypeDetailMovesHeaderAdapter(
+    private val movesAdapter: TypeDetailMovesAdapter,
     private val context: Context,
 ) : RecyclerView.Adapter<TypeDetailMovesHeaderAdapter.TypeDetailPokemonHeaderHolder>() {
 
     inner class TypeDetailPokemonHeaderHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: TypeDetailMovesRecyclerItemHeaderBinding =
             TypeDetailMovesRecyclerItemHeaderBinding.bind(view)
+
+        init {
+            binding.gen.setOnClickListener { movesAdapter.sortBy(0) }
+            binding.move.setOnClickListener { movesAdapter.sortBy(1) }
+            binding.category.setOnClickListener { movesAdapter.sortBy(2) }
+            binding.power.setOnClickListener { movesAdapter.sortBy(3) }
+            binding.pp.setOnClickListener { movesAdapter.sortBy(4) }
+        }
+
     }
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

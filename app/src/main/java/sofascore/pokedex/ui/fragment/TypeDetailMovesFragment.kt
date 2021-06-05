@@ -42,7 +42,7 @@ class TypeDetailMovesFragment : Fragment() {
                 requireContext(),
             )
 
-            val movesHeaderAdapter = TypeDetailMovesHeaderAdapter(requireContext())
+            val movesHeaderAdapter = TypeDetailMovesHeaderAdapter(movesAdapter,requireContext())
 
             val concatAdapter = ConcatAdapter(movesHeaderAdapter, movesAdapter)
             binding.movesRecycler.adapter = concatAdapter

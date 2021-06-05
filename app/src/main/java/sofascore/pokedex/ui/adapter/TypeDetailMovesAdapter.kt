@@ -14,9 +14,11 @@ import java.util.*
 
 
 class TypeDetailMovesAdapter(
-    private val data: List<TypeDetailMoveResponse>,
+    var data: List<TypeDetailMoveResponse>,
     private val context: Context,
 ) : RecyclerView.Adapter<TypeDetailMovesAdapter.TypeDetailPokemonHolder>() {
+
+    private var sorted = BooleanArray(5)
 
     inner class TypeDetailPokemonHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: TypeDetailMovesRecyclerItemBinding =
@@ -82,6 +84,20 @@ class TypeDetailMovesAdapter(
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    fun sortBy(col: Int) {
+        data = when (col) {
+            0 -> if (sorted[col]) data.sortedBy { it.generation.name } else data.sortedByDescending { it.generation.name }
+            1 -> if (sorted[col]) data.sortedBy { it.name } else data.sortedByDescending { it.name }
+            2 -> if (sorted[col]) data.sortedBy { it.damageClass?.name } else data.sortedByDescending { it.damageClass?.name }
+            3 -> if (sorted[col]) data.sortedBy { it.power } else data.sortedByDescending { it.power }
+            4 -> if (sorted[col]) data.sortedBy { it.pp } else data.sortedByDescending { it.pp }
+            else -> arrayListOf()
+        }
+
+        sorted[col] = !sorted[col]
+        notifyDataSetChanged()
     }
 
 
