@@ -36,7 +36,7 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
 
             pokemon.favouriteNumber = when (pokemon.favourite) {
                 true -> null
-                false -> database.PokemonDao().getMaxFavouriteCityOrder() + 1
+                false -> database.PokemonDao().getMaxFavouritePokemonOrder() + 1
             }
 
             pokemon.favourite = !pokemon.favourite

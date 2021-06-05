@@ -37,7 +37,7 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
             val id = value.id
 
             if (database.PokemonDao().getPokemonById(id) == null) {
-                val next = database.PokemonDao().getMaxFavouriteCityOrder() + 1
+                val next = database.PokemonDao().getMaxFavouritePokemonOrder() + 1
                 val pokemon = Pokemon(id, value.name, true, next)
                 database.PokemonDao().insert(pokemon)
             } else {
@@ -45,7 +45,7 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
                     database.PokemonDao().updatePokemonFavStatusAndOrder(id, false, -1)
 
                 } else {
-                    val next = database.PokemonDao().getMaxFavouriteCityOrder() + 1
+                    val next = database.PokemonDao().getMaxFavouritePokemonOrder() + 1
                     database.PokemonDao().updatePokemonFavStatusAndOrder(id, true, next)
                 }
             }

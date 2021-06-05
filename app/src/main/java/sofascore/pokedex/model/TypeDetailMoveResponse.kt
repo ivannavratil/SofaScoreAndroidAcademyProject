@@ -31,7 +31,7 @@ data class TypeDetailMoveResponse(
     @SerializedName("machines")
     val machines: List<Any>,
     @SerializedName("meta")
-    val meta: Meta,
+    val meta: Meta?,
     @SerializedName("name")
     val name: String, // pound
     @SerializedName("names")
@@ -159,7 +159,7 @@ data class TypeDetailMoveResponse(
         @SerializedName("ailment_chance")
         val ailmentChance: Int, // 0
         @SerializedName("category")
-        val category: Category,
+        val category: Category?,
         @SerializedName("crit_rate")
         val critRate: Int, // 0
         @SerializedName("drain")
@@ -169,13 +169,13 @@ data class TypeDetailMoveResponse(
         @SerializedName("healing")
         val healing: Int, // 0
         @SerializedName("max_hits")
-        val maxHits: Any?, // null
+        val maxHits: Int?, // null
         @SerializedName("max_turns")
-        val maxTurns: Any?, // null
+        val maxTurns: Int?, // null
         @SerializedName("min_hits")
-        val minHits: Any?, // null
+        val minHits: Int?, // null
         @SerializedName("min_turns")
-        val minTurns: Any?, // null
+        val minTurns: Int?, // null
         @SerializedName("stat_chance")
         val statChance: Int // 0
     ) {

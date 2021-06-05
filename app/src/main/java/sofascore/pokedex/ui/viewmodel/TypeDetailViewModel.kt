@@ -4,16 +4,19 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import sofascore.pokedex.model.TypeDetailMoveResponse
 import sofascore.pokedex.model.TypeDetailResponse
 import sofascore.pokedex.model.network.Network
+import sofascore.pokedex.other.Util
 
 class TypeDetailViewModel : ViewModel() {
 
     var typeDetail: MutableLiveData<TypeDetailResponse> = MutableLiveData()
-    var moveDetail: MutableLiveData<TypeDetailMoveResponse> = MutableLiveData()
+    var moveDetail: MutableLiveData<List<TypeDetailMoveResponse>> = MutableLiveData()
 
     private val network = Network().service
 
@@ -21,17 +24,16 @@ class TypeDetailViewModel : ViewModel() {
 
         viewModelScope.launch {
 
-            lateinit var res1: TypeDetailResponse
-            lateinit var res2: TypeDetailMoveResponse
+            typeDetail.value = network.getTypeDetail(id)
 
-            val async1 = async { res1 = network.getTypeDetail(id) }
-            val async2 = async { res2 = network.getMoveDetail(id) }
+            val asyncTasks: List<Deferred<TypeDetailMoveResponse>> =
+                typeDetail.value!!.moves.map { move -> async { network.getMoveDetail(Util.getId(move.url)) } }
 
-            async1.await()
-            typeDetail.value = res1
+            val responses: List<TypeDetailMoveResponse> = asyncTasks.awaitAll()
 
-            async2.await()
-            moveDetail.value = res2
+            moveDetail.value = responses
+
+
         }
     }
 }

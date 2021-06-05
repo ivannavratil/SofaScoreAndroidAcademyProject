@@ -20,7 +20,7 @@ interface PokemonDao : BaseDao<Pokemon> {
     suspend fun getFavouriteNumber(id: Int): Int
 
     @Query("SELECT coalesce(MAX(p_favourite_number),0) FROM Pokemon")
-    suspend fun getMaxFavouriteCityOrder(): Int
+    suspend fun getMaxFavouritePokemonOrder(): Int
 
     @Query("UPDATE Pokemon SET p_favourite=:favourite, p_favourite_number = :favouriteNumber WHERE p_id = :id")
     suspend fun updatePokemonFavStatusAndOrder(
