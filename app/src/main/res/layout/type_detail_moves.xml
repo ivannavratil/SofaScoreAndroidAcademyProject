@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/gen"
+        style="@style/AssistiveDarkCenter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="I" />
+
+    <TextView
+        android:id="@+id/move"
+        style="@style/AssistiveDarkCenter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gen"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bloom Doom" />
+
+    <TextView
+        android:id="@+id/category"
+        style="@style/AssistiveDarkCenter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/move"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Physical" />
+
+    <TextView
+        android:id="@+id/power"
+        style="@style/AssistiveDarkCenter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/category"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="40" />
+
+    <TextView
+        android:id="@+id/pp"
+        style="@style/AssistiveDarkCenter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/power"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="25
+        (max 40)" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
