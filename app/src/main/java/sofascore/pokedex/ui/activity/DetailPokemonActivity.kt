@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.other.Util
-import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.ActivityDetailPokemonBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
+import sofascore.pokedex.other.Util
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.ui.adapter.PokemonDetailAbilitiesAdapter
 import sofascore.pokedex.ui.adapter.PokemonDetailStatsAdapter
 import sofascore.pokedex.ui.adapter.PokemonDetailTypeAdapter
@@ -24,7 +24,7 @@ class DetailPokemonActivity : AppCompatActivity() {
     private val detailPokemonViewModel: DetailPokemonViewModel by viewModels()
     private lateinit var binding: ActivityDetailPokemonBinding
     private val typeItemWidth = 85.0
-    private val nonRecyclerWidth = 16+144+16
+    private val nonRecyclerWidth = 16 + 144 + 16
 
 
     companion object {
@@ -77,7 +77,10 @@ class DetailPokemonActivity : AppCompatActivity() {
 
     private fun setupRecyclerViews(): Triple<RecyclerView, RecyclerView, RecyclerView> {
         val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecycler
-        typeRecycler.layoutManager = GridLayoutManager(this, Util.calculateNoOfColumns(this,typeItemWidth,nonRecyclerWidth))
+        typeRecycler.layoutManager = GridLayoutManager(
+            this,
+            Util.calculateNoOfColumns(this, typeItemWidth, nonRecyclerWidth)
+        )
 
         val statsRecycler = binding.pokemonDetails.pokemonStats.statsRecycler
         statsRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -99,7 +102,6 @@ class DetailPokemonActivity : AppCompatActivity() {
 
     }
 
-
     private fun setupMainInfo(detailPokemon: DetailPokemonResponse) {
         binding.realTitle.text = detailPokemon.name.capitalize()
         binding.pokemonDetails.pokemonMain.pokemonName.text = detailPokemon.name.capitalize()
@@ -117,5 +119,15 @@ class DetailPokemonActivity : AppCompatActivity() {
         pokemonHeightWeight.includedWeight.attKey.text = resources.getString(R.string.weight)
         pokemonHeightWeight.includedWeight.attVal.text =
             Util.weightToFormattedWeight(detailPokemon.weight)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        //TODO: check flickering
+        detailPokemonViewModel.refreshFavoriteStatus(
+            detailPokemonViewModel.detailPokemon.value!!.id,
+            this
+        )
     }
 }

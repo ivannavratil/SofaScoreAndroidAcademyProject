@@ -12,9 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.internal.TextWatcherAdapter
 import sofascore.pokedex.R
-import sofascore.pokedex.other.Util
 import sofascore.pokedex.databinding.FragmentSearchBinding
 import sofascore.pokedex.model.PokemonNamePhoto
+import sofascore.pokedex.other.Util
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.adapter.PokemonAutoSuggestAdapter
 import sofascore.pokedex.ui.adapter.PokemonPagedAdapter
@@ -78,8 +78,6 @@ class SearchFragment : Fragment() {
 
     fun filterResults(search: String) {
 
-        print("before")
-
         val customAdapter =
             PokemonAutoSuggestAdapter(
                 requireContext(),
@@ -94,8 +92,6 @@ class SearchFragment : Fragment() {
         binding.autoCompleteTextView.setAdapter(customAdapter)
         binding.autoCompleteTextView.refreshAutoCompleteResults()
 
-
-        println("stop")
     }
 
     private fun setupPagedPokemons() {
@@ -107,6 +103,12 @@ class SearchFragment : Fragment() {
         pagedPokemonsViewModel.pagingPokemonsList.observe(viewLifecycleOwner, {
             pagedAdapter.submitList(it)
         })
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        pagedPokemonsViewModel.pagingPokemonsList.value?.dataSource?.invalidate()
     }
 
 }

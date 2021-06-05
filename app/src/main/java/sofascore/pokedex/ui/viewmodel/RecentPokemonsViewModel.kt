@@ -12,7 +12,7 @@ import sofascore.pokedex.model.PokemonDataSource
 
 class RecentPokemonsViewModel(application: Application) : AndroidViewModel(application) {
     var pagingPokemonsList: LiveData<PagedList<Pokemon>>
-
+    private lateinit var dataSourceFactory: DataSource.Factory<Int,Pokemon>
 
     init {
         val config = PagedList.Config.Builder().setPageSize(40).setInitialLoadSizeHint(50)
@@ -21,7 +21,7 @@ class RecentPokemonsViewModel(application: Application) : AndroidViewModel(appli
     }
 
     private fun initializePagedList(config: PagedList.Config): LivePagedListBuilder<Int, Pokemon> {
-        val dataSourceFactory = object : DataSource.Factory<Int, Pokemon>() {
+         dataSourceFactory = object : DataSource.Factory<Int, Pokemon>() {
             override fun create(): DataSource<Int, Pokemon> {
                 return PokemonDataSource(
                     viewModelScope,

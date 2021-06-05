@@ -29,6 +29,13 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+    fun refreshFavoriteStatus(id: Int, context: Context) {
+        viewModelScope.launch {
+            favourite.value =
+                AppDatabase.getDatabase(context).PokemonDao().isPokemonFavourite(id) == true
+        }
+    }
+
     fun flipFavourite(context: Context) {
 
         viewModelScope.launch {

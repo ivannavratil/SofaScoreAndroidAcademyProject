@@ -12,11 +12,11 @@ import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.PokemonSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
-import sofascore.pokedex.ui.adapter.helper.PokemonPhotoDiffUtil
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.adapter.PokemonPagedAdapter.PokemonViewHolder
+import sofascore.pokedex.ui.adapter.helper.PokemonPhotoDiffUtil
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
-import java.util.*
 
 class PokemonPagedAdapter(
     private val context: Context,
@@ -24,12 +24,13 @@ class PokemonPagedAdapter(
 ) :
     PagedListAdapter<Pokemon, PokemonViewHolder>(PokemonPhotoDiffUtil()) {
 
-    class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = PokemonSearchRecyclerItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
-                onClick(Integer.parseInt(binding.pokemonNum.text as String), view.context)
+                val parseInt = Integer.parseInt(binding.pokemonNum.text as String);
+                onClick(parseInt, view.context)
             }
         }
 
@@ -44,7 +45,7 @@ class PokemonPagedAdapter(
             context: Context,
             pagedViewModel: FavoriteViewModel
         ) {
-            binding.pokemonName.text = pokemon.name.capitalize(Locale.getDefault())
+            binding.pokemonName.text = pokemon.name.capitalize()
 
             binding.pokemonNum.text = pokemon.getFormattedId()
 
@@ -65,7 +66,6 @@ class PokemonPagedAdapter(
                     v.setImageResource(if (newFavourite) R.drawable.ic_star_1 else R.drawable.ic_star_0)
                 }
             }
-
             binding.pokemonPhoto.load(pokemon.getAvatarUrl())
         }
     }
