@@ -35,6 +35,9 @@
     <string name="power">Snaga</string>
     <string name="types">Tip</string>
     <string name="none">Ništa</string>
+    <string name="gen">Gen</string>
+    <string name="move">Potez</string>
+    <string name="category">Kategorija</string>
 
 
 </resources>
