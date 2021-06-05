@@ -13,7 +13,7 @@ data class TypeDetailMoveResponse(
     @SerializedName("contest_type")
     val contestType: ContestType,
     @SerializedName("damage_class")
-    val damageClass: DamageClass,
+    val damageClass: DamageClass?,
     @SerializedName("effect_chance")
     val effectChance: Any?, // null
     @SerializedName("effect_changes")

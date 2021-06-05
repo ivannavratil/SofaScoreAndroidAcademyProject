@@ -75,4 +75,9 @@ object Util {
         return ((screenWidthDp - adjustContext) / itemWidth + 0.5).toInt() // +0.5 for correct rounding to int.
     }
 
+    fun replaceMinusWithSpaceAndUppercase(text: String): String {
+        return text.replace("-", " ").split(" ").map { it.capitalize() }
+            .joinToString(separator = " ");
+    }
+
 }
