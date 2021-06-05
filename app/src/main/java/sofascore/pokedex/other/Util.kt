@@ -1,4 +1,4 @@
-package sofascore.pokedex
+package sofascore.pokedex.other
 
 import android.content.Context
 import android.util.DisplayMetrics

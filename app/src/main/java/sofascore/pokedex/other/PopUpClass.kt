@@ -1,4 +1,4 @@
-package sofascore.pokedex
+package sofascore.pokedex.other
 
 
 import android.view.Gravity
@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.snackbar.Snackbar
+import sofascore.pokedex.R
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 
 

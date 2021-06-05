@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.PokemonDetailAbilitiesRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse.Ability
 
-class AbilitiesAdapter(
+class PokemonDetailAbilitiesAdapter(
     private val data: List<Ability>,
     private val context: Context,
-) : RecyclerView.Adapter<AbilitiesAdapter.AbilityHolder>() {
+) : RecyclerView.Adapter<PokemonDetailAbilitiesAdapter.AbilityHolder>() {
 
 
     inner class AbilityHolder(view: View) : RecyclerView.ViewHolder(view) {

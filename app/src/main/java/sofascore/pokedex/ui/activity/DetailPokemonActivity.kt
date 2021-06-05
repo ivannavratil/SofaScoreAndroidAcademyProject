@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.ActivityDetailPokemonBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
-import sofascore.pokedex.ui.adapter.AbilitiesAdapter
-import sofascore.pokedex.ui.adapter.StatsAdapter
-import sofascore.pokedex.ui.adapter.TypeAdapter
+import sofascore.pokedex.ui.adapter.PokemonDetailAbilitiesAdapter
+import sofascore.pokedex.ui.adapter.PokemonDetailStatsAdapter
+import sofascore.pokedex.ui.adapter.PokemonDetailTypeAdapter
 import sofascore.pokedex.ui.viewmodel.DetailPokemonViewModel
 
 
@@ -49,15 +49,15 @@ class DetailPokemonActivity : AppCompatActivity() {
         detailPokemonViewModel.detailPokemon.observe(this, {
             setupUI(it)
 
-            val typeAdapter = TypeAdapter(it.types, this)
+            val typeAdapter = PokemonDetailTypeAdapter(it.types, this)
             typeRecycler.adapter = typeAdapter
 
-            val statsAdapter = StatsAdapter(it.stats, this)
+            val statsAdapter = PokemonDetailStatsAdapter(it.stats, this)
             binding.pokemonDetails.pokemonStats.totalValue.text =
                 it.stats.map { a -> a.baseStat }.sum().toString()
             statsRecycler.adapter = statsAdapter
 
-            val abilitiesAdapter = AbilitiesAdapter(it.abilities, this)
+            val abilitiesAdapter = PokemonDetailAbilitiesAdapter(it.abilities, this)
             abilitiesRecycler.adapter = abilitiesAdapter
         })
 

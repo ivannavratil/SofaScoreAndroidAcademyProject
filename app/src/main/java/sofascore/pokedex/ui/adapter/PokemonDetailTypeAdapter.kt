@@ -9,18 +9,18 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.TypeDetailRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
 import sofascore.pokedex.ui.activity.TypeDetailActivity
 import java.util.*
 
 
-class TypeAdapter(
+class PokemonDetailTypeAdapter(
     private val data: List<DetailPokemonResponse.Type>,
     private val context: Context,
-) : RecyclerView.Adapter<TypeAdapter.TypeHolder>() {
+) : RecyclerView.Adapter<PokemonDetailTypeAdapter.TypeHolder>() {
 
     inner class TypeHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: TypeDetailRecyclerItemBinding = TypeDetailRecyclerItemBinding.bind(view)
@@ -41,14 +41,14 @@ class TypeAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeAdapter.TypeHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonDetailTypeAdapter.TypeHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.type_detail_recycler_item, parent, false)
         return TypeHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: TypeAdapter.TypeHolder,
+        holder: PokemonDetailTypeAdapter.TypeHolder,
         position: Int
     ) {
         val type = data[position];

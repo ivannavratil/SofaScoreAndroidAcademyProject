@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
+import sofascore.pokedex.other.Util
 import sofascore.pokedex.databinding.TypeDetailDamageOverviewFragmentBinding
-import sofascore.pokedex.ui.adapter.DamageAdapter
+import sofascore.pokedex.ui.adapter.TypeDetailDamageAdapter
 import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
 
 class TypeDetailDamageOverviewFragment : Fragment() {
@@ -77,17 +77,17 @@ class TypeDetailDamageOverviewFragment : Fragment() {
 
         typeDetailViewModel.typeDetail.observe(viewLifecycleOwner) {
             binding.offensive.rows.twox.recycler.adapter =
-                DamageAdapter(it.damageRelations.doubleDamageTo, requireContext(), Power.TWOX)
+                TypeDetailDamageAdapter(it.damageRelations.doubleDamageTo, requireContext(), Power.TWOX)
             binding.offensive.rows.onehalfx.recycler.adapter =
-                DamageAdapter(it.damageRelations.halfDamageTo, requireContext(), Power.HALFX)
+                TypeDetailDamageAdapter(it.damageRelations.halfDamageTo, requireContext(), Power.HALFX)
             binding.offensive.rows.zerox.recycler.adapter =
-                DamageAdapter(it.damageRelations.noDamageTo, requireContext(), Power.ZEROX)
+                TypeDetailDamageAdapter(it.damageRelations.noDamageTo, requireContext(), Power.ZEROX)
             binding.defensive.rows.twox.recycler.adapter =
-                DamageAdapter(it.damageRelations.doubleDamageFrom, requireContext(), Power.TWOX)
+                TypeDetailDamageAdapter(it.damageRelations.doubleDamageFrom, requireContext(), Power.TWOX)
             binding.defensive.rows.onehalfx.recycler.adapter =
-                DamageAdapter(it.damageRelations.halfDamageFrom, requireContext(), Power.HALFX)
+                TypeDetailDamageAdapter(it.damageRelations.halfDamageFrom, requireContext(), Power.HALFX)
             binding.defensive.rows.zerox.recycler.adapter =
-                DamageAdapter(it.damageRelations.noDamageFrom, requireContext(), Power.ZEROX)
+                TypeDetailDamageAdapter(it.damageRelations.noDamageFrom, requireContext(), Power.ZEROX)
         }
 
         return binding.root

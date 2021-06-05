@@ -1,7 +1,7 @@
 package sofascore.pokedex.model
 
 import com.google.gson.annotations.SerializedName
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util.capitalize
 
 data class AllPokemonsResponse(
     val count: Int, // 1118

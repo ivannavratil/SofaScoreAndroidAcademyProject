@@ -12,12 +12,13 @@ import coil.load
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.PokemonSearchRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
+import sofascore.pokedex.ui.adapter.helper.PokemonPhotoDiffUtil
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
-import sofascore.pokedex.ui.adapter.PagedPokemonAdapter.PokemonViewHolder
+import sofascore.pokedex.ui.adapter.PokemonPagedAdapter.PokemonViewHolder
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
 
-class PagedPokemonAdapter(
+class PokemonPagedAdapter(
     private val context: Context,
     private val pagedViewModel: FavoriteViewModel
 ) :

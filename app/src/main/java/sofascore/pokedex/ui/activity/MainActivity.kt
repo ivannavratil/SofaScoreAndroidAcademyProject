@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import sofascore.pokedex.LanguageHelper
+import sofascore.pokedex.other.LanguageHelper
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.ActivityMainBinding
 

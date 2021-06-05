@@ -9,18 +9,18 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.PokemonDetailDamageRecyclerItemBinding
 import sofascore.pokedex.model.TypeDetailResponse.DamageRelations.Damage
 import sofascore.pokedex.ui.fragment.TypeDetailDamageOverviewFragment.Power
 import java.util.*
 
 
-class DamageAdapter(
+class TypeDetailDamageAdapter(
     private var data: List<Damage>,
     private val context: Context,
     private val power: Power,
-) : RecyclerView.Adapter<DamageAdapter.DamageHolder>() {
+) : RecyclerView.Adapter<TypeDetailDamageAdapter.DamageHolder>() {
 
     init {
         if (data.isEmpty()) {
@@ -34,14 +34,14 @@ class DamageAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DamageAdapter.DamageHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeDetailDamageAdapter.DamageHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.type_detail_recycler_item, parent, false)
         return DamageHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: DamageAdapter.DamageHolder,
+        holder: TypeDetailDamageAdapter.DamageHolder,
         position: Int
     ) {
         val type = data[position];

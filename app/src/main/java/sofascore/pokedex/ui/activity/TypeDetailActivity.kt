@@ -10,9 +10,9 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.ViewCompat
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.ActivityTypeDetailBinding
-import sofascore.pokedex.ui.adapter.SectionsPagerAdapter
+import sofascore.pokedex.ui.adapter.helper.SectionsPagerAdapter
 import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
 import java.util.*
 

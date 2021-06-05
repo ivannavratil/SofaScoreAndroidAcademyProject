@@ -6,7 +6,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import sofascore.pokedex.model.PokemonNamePhoto
 
-class AutoSuggestAdapter(
+class PokemonAutoSuggestAdapter(
     context: Context,
     resource: Int,
     private val data: List<PokemonNamePhoto>

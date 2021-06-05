@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
+import sofascore.pokedex.other.Util
 import sofascore.pokedex.databinding.TypeDetailPokemonsFragmentBinding
 import sofascore.pokedex.ui.adapter.TypeDetailPokemonAdapter
 import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel

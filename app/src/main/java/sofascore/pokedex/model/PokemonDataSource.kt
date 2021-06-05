@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.paging.PageKeyedDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import sofascore.pokedex.Util
+import sofascore.pokedex.other.Util
 import sofascore.pokedex.model.db.AppDatabase
 import sofascore.pokedex.model.network.Network
 

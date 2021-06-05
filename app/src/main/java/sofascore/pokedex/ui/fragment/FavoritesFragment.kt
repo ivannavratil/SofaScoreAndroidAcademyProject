@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.databinding.FragmentFavoritesBinding
 import sofascore.pokedex.model.Pokemon
-import sofascore.pokedex.ui.adapter.FavoritePokemonsAdapter
+import sofascore.pokedex.ui.adapter.PokemonFavoriteAdapter
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
 
@@ -32,29 +32,29 @@ class FavoritesFragment : Fragment() {
 
         binding.recyclerViewFavorite.layoutManager = LinearLayoutManager(requireContext())
 
-        var adapter: FavoritePokemonsAdapter? = null
+        var adapterPokemon: PokemonFavoriteAdapter? = null
 
         favoriteViewModel.favoritePokemons.observe(viewLifecycleOwner) {
-            adapter = FavoritePokemonsAdapter(
+            adapterPokemon = PokemonFavoriteAdapter(
                 it as ArrayList<Pokemon>,
                 requireContext(),
                 favoriteViewModel
             )
-            binding.recyclerViewFavorite.adapter = adapter
+            binding.recyclerViewFavorite.adapter = adapterPokemon
         }
 
 
         val itemTouchHelper = ItemTouchHelper(simpleCallback)
 
         binding.editPen.setOnClickListener {
-            adapter?.changeHandlerVisibility()
+            adapterPokemon?.changeHandlerVisibility()
             binding.editPen.visibility = View.GONE
             binding.done.visibility = View.VISIBLE
             itemTouchHelper.attachToRecyclerView(binding.recyclerViewFavorite)
         }
 
         binding.done.setOnClickListener {
-            adapter?.changeHandlerVisibility()
+            adapterPokemon?.changeHandlerVisibility()
             binding.editPen.visibility = View.VISIBLE
             binding.done.visibility = View.GONE
             itemTouchHelper.attachToRecyclerView(null)
@@ -77,7 +77,7 @@ class FavoritesFragment : Fragment() {
                 val fromPosition = viewHolder.adapterPosition
                 val toPosition = target.adapterPosition
 
-                val adapter = (recyclerView.adapter as FavoritePokemonsAdapter)
+                val adapter = (recyclerView.adapter as PokemonFavoriteAdapter)
 
                 favoriteViewModel.swapFavoritePokemonsOrder(
                     adapter.getItem(fromPosition),

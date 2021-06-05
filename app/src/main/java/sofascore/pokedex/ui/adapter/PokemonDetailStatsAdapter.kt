@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.PokemonDetailStatsRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse.Stat
 
-class StatsAdapter(private val data: List<Stat>, private val context: Context) :
-    RecyclerView.Adapter<StatsAdapter.StatsHolder>() {
+class PokemonDetailStatsAdapter(private val data: List<Stat>, private val context: Context) :
+    RecyclerView.Adapter<PokemonDetailStatsAdapter.StatsHolder>() {
 
 
     inner class StatsHolder(view: View) : RecyclerView.ViewHolder(view) {

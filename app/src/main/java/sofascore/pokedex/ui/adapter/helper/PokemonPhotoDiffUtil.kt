@@ -1,8 +1,7 @@
-package sofascore.pokedex.ui.adapter
+package sofascore.pokedex.ui.adapter.helper
 
 import androidx.recyclerview.widget.DiffUtil
 import sofascore.pokedex.model.Pokemon
-import sofascore.pokedex.model.PokemonNamePhoto
 
 class PokemonPhotoDiffUtil: DiffUtil.ItemCallback<Pokemon>() {
     override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean {

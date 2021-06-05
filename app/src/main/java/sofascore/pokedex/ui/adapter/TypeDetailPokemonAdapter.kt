@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
-import sofascore.pokedex.Util.capitalize
+import sofascore.pokedex.other.Util
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.TypeDetailPokemonRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.model.TypeDetailResponse

@@ -15,11 +15,11 @@ import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import java.util.*
 
-class FavoritePokemonsAdapter(
+class PokemonFavoriteAdapter(
     private val data: ArrayList<Pokemon>,
     private val context: Context,
     private val favoriteViewModel: FavoriteViewModel
-) : RecyclerView.Adapter<FavoritePokemonsAdapter.PokemonHolder>() {
+) : RecyclerView.Adapter<PokemonFavoriteAdapter.PokemonHolder>() {
 
     private var handlerVisible: Boolean = false
 

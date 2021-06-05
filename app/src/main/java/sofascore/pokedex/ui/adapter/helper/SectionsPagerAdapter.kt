@@ -1,4 +1,4 @@
-package sofascore.pokedex.ui.adapter
+package sofascore.pokedex.ui.adapter.helper
 
 import android.content.Context
 import androidx.fragment.app.Fragment

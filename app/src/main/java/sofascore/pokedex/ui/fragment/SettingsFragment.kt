@@ -13,8 +13,8 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import sofascore.pokedex.LanguageHelper
-import sofascore.pokedex.PopUpClass
+import sofascore.pokedex.other.LanguageHelper
+import sofascore.pokedex.other.PopUpClass
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.FragmentSettingsBinding
 import sofascore.pokedex.ui.activity.AboutActivity

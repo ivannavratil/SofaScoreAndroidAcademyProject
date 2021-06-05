@@ -12,12 +12,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.internal.TextWatcherAdapter
 import sofascore.pokedex.R
-import sofascore.pokedex.Util
+import sofascore.pokedex.other.Util
 import sofascore.pokedex.databinding.FragmentSearchBinding
 import sofascore.pokedex.model.PokemonNamePhoto
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
-import sofascore.pokedex.ui.adapter.AutoSuggestAdapter
-import sofascore.pokedex.ui.adapter.PagedPokemonAdapter
+import sofascore.pokedex.ui.adapter.PokemonAutoSuggestAdapter
+import sofascore.pokedex.ui.adapter.PokemonPagedAdapter
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
 import sofascore.pokedex.ui.viewmodel.RecentPokemonsViewModel
 import sofascore.pokedex.ui.viewmodel.SearchResultsViewModel
@@ -30,7 +30,7 @@ class SearchFragment : Fragment() {
     private val favouritePokemonsViewModel: FavoriteViewModel by viewModels()
 
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var adapter: PagedPokemonAdapter
+    private lateinit var pagedAdapter: PokemonPagedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,7 +81,7 @@ class SearchFragment : Fragment() {
         print("before")
 
         val customAdapter =
-            AutoSuggestAdapter(
+            PokemonAutoSuggestAdapter(
                 requireContext(),
                 R.layout.support_simple_spinner_dropdown_item,
                 searchResultsViewModel.allResults.value?.filter {
@@ -99,13 +99,13 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupPagedPokemons() {
-        adapter = PagedPokemonAdapter(requireContext(), favouritePokemonsViewModel)
+        pagedAdapter = PokemonPagedAdapter(requireContext(), favouritePokemonsViewModel)
 
         binding.recyclerViewFavorite.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewFavorite.adapter = adapter
+        binding.recyclerViewFavorite.adapter = pagedAdapter
 
         pagedPokemonsViewModel.pagingPokemonsList.observe(viewLifecycleOwner, {
-            adapter.submitList(it)
+            pagedAdapter.submitList(it)
         })
     }
 

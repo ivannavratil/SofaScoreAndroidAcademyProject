@@ -1,9 +1,10 @@
-package sofascore.pokedex
+package sofascore.pokedex.other
 
 import android.content.Context
 import android.content.res.Configuration
 import android.preference.PreferenceManager
 import android.util.Log
+import sofascore.pokedex.R
 import java.util.*
 
 const val PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE"
