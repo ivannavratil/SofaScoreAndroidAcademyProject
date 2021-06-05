@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import sofascore.pokedex.databinding.TypeDetailMovesFragmentBinding
 import sofascore.pokedex.ui.adapter.TypeDetailMovesAdapter
+import sofascore.pokedex.ui.adapter.TypeDetailMovesHeaderAdapter
 import sofascore.pokedex.ui.viewmodel.TypeDetailViewModel
 
 
@@ -34,14 +36,16 @@ class TypeDetailMovesFragment : Fragment() {
 
         binding.movesRecycler.layoutManager = LinearLayoutManager(requireContext())
 
-        var movesAdapter: TypeDetailMovesAdapter
-
         typeDetailViewModel.moveDetail.observe(viewLifecycleOwner) {
-            movesAdapter = TypeDetailMovesAdapter(
+            val movesAdapter = TypeDetailMovesAdapter(
                 it,
                 requireContext(),
             )
-            binding.movesRecycler.adapter = movesAdapter
+
+            val movesHeaderAdapter = TypeDetailMovesHeaderAdapter(requireContext())
+
+            val concatAdapter = ConcatAdapter(movesHeaderAdapter, movesAdapter)
+            binding.movesRecycler.adapter = concatAdapter
         }
     }
 

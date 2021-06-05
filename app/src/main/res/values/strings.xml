@@ -136,4 +136,8 @@
     <string name="twox" translatable="false">2x</string>
     <string name="onehalfx" translatable="false">1/2x</string>
     <string name="none">None</string>
+    <string name="gen">gen</string>
+    <string name="move">move</string>
+    <string name="category">category</string>
+    <string name="pp">pp</string>
 </resources>

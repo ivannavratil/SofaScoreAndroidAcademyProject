@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/gen"
+        style="@style/DescriptionDarkLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="GEN" />
+
+    <TextView
+        android:id="@+id/move"
+        style="@style/DescriptionDarkLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.8"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gen"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="MOVE" />
+
+    <TextView
+        android:id="@+id/category"
+        style="@style/DescriptionDarkLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.4"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/move"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="CATEGORY" />
+
+    <TextView
+        android:id="@+id/power"
+        style="@style/DescriptionDarkLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/category"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="POWER" />
+
+    <TextView
+        android:id="@+id/pp"
+        style="@style/DescriptionDarkLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/power"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="PP" />
+
+
+</LinearLayout>

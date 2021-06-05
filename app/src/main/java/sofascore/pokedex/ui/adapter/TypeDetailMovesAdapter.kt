@@ -10,6 +10,7 @@ import sofascore.pokedex.databinding.TypeDetailMovesRecyclerItemBinding
 import sofascore.pokedex.model.TypeDetailMoveResponse
 import sofascore.pokedex.other.Util
 import sofascore.pokedex.other.Util.capitalize
+import java.util.*
 
 
 class TypeDetailMovesAdapter(
@@ -20,20 +21,6 @@ class TypeDetailMovesAdapter(
     inner class TypeDetailPokemonHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: TypeDetailMovesRecyclerItemBinding =
             TypeDetailMovesRecyclerItemBinding.bind(view)
-
-//        init {
-//            view.setOnClickListener {
-//                onClick(data[adapterPosition], view.context)
-//            }
-//        }
-//
-//        private fun onClick(type: TypeDetailMoveResponse, context: Context) {
-//
-//            val intent = Intent(context, DetailPokemonActivity()::class.java)
-//
-//            //intent.putExtra(DetailPokemonActivity.pokemonById, Util.getId(type.pokemon.url))
-//            context.startActivity(intent)
-//        }
     }
 
     override fun onCreateViewHolder(
@@ -51,8 +38,8 @@ class TypeDetailMovesAdapter(
     ) {
         val move = data[position];
 
-        holder.binding.gen.text = move.generation.name.split("-")[1].trim().toUpperCase()
-
+        holder.binding.gen.text = move.generation.name.split("-")[1].trim()
+            .uppercase(Locale.getDefault())
 
         holder.binding.gen.setBackgroundColor(
             context.resources.getColor(
