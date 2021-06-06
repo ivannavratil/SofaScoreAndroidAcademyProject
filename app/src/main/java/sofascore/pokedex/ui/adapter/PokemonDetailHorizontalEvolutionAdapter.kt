@@ -74,8 +74,6 @@ class PokemonDetailHorizontalEvolutionAdapter(
                     context.packageName
                 )
             )
-
-
         }
 
         val typeRecycler = holder.binding.pokemonDetailEvolutionHorizontalTypeRecyclerItem

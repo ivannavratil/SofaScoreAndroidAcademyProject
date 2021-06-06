@@ -1,18 +1,16 @@
 package sofascore.pokedex.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
-import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.PokemonDetailAbilitiesRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse.Ability
+import sofascore.pokedex.other.Util.capitalize
 
 class PokemonDetailAbilitiesAdapter(
     private val data: List<Ability>,
-    private val context: Context,
 ) : RecyclerView.Adapter<PokemonDetailAbilitiesAdapter.AbilityHolder>() {
 
 

@@ -7,20 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
-import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.PokemonDetailStatsRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse.Stat
+import sofascore.pokedex.other.Util.capitalize
 
 class PokemonDetailStatsAdapter(private val data: List<Stat>, private val context: Context) :
     RecyclerView.Adapter<PokemonDetailStatsAdapter.StatsHolder>() {
-
 
     inner class StatsHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: PokemonDetailStatsRecyclerItemBinding =
             PokemonDetailStatsRecyclerItemBinding.bind(view)
 
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatsHolder {
         val view = LayoutInflater.from(parent.context)
@@ -36,10 +34,6 @@ class PokemonDetailStatsAdapter(private val data: List<Stat>, private val contex
         holder.binding.statsValue.text = stat.baseStat.toString()
         holder.binding.progressBar.progress = stat.baseStat
 
-
-
-
-
         holder.binding.progressBar.progressTintList = ColorStateList.valueOf(
             context.resources.getColor(
                 when (position) {
@@ -53,8 +47,6 @@ class PokemonDetailStatsAdapter(private val data: List<Stat>, private val contex
                 }
             )
         );
-
-
     }
 
     private fun adjustShowName(name: String): String {

@@ -37,17 +37,16 @@ class TypeDetailDamageAdapter(
 
         init {
             view.setOnClickListener {
-                onClick(Util.getId(data[adapterPosition].url), view.context)
+                if (data[adapterPosition].name != context.resources.getString(R.string.none)) {
+                    onClick(Util.getId(data[adapterPosition].url), view.context)
+                }
             }
         }
 
         private fun onClick(id: Int, context: Context) {
-
             val intent = Intent(context, TypeDetailActivity()::class.java)
-
             intent.putExtra(TypeDetailActivity.type, id)
             context.startActivity(intent)
-
         }
 
     }

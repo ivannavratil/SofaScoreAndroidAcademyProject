@@ -32,12 +32,9 @@ class PokemonDetailEvolutionTypeAdapter(
         }
 
         private fun onClick(type: DetailPokemonResponse.Type, context: Context) {
-
             val intent = Intent(context, TypeDetailActivity()::class.java)
-
             intent.putExtra(TypeDetailActivity.type, Util.getId(type.type.url))
             context.startActivity(intent)
-
         }
     }
 

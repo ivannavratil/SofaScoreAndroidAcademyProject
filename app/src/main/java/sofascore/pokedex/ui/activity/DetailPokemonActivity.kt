@@ -60,7 +60,7 @@ class DetailPokemonActivity : AppCompatActivity() {
                 it.stats.map { a -> a.baseStat }.sum().toString()
             statsRecycler.adapter = statsAdapter
 
-            val abilitiesAdapter = PokemonDetailAbilitiesAdapter(it.abilities, this)
+            val abilitiesAdapter = PokemonDetailAbilitiesAdapter(it.abilities)
             abilitiesRecycler.adapter = abilitiesAdapter
         })
 

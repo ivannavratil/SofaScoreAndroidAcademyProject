@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sofascore.pokedex.R
-import sofascore.pokedex.other.Util
-import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.databinding.TypeDetailPokemonRecyclerItemBinding
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.model.TypeDetailResponse
+import sofascore.pokedex.other.Util
+import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.ui.activity.DetailPokemonActivity
 
 
@@ -57,7 +57,6 @@ class TypeDetailPokemonAdapter(
 
         holder.binding.pokemonName.text = type.pokemon.name.capitalize()
         holder.binding.pokemonPhoto.load(Pokemon.getAvatarUrl(Util.getId(type.pokemon.url)))
-
     }
 
     override fun getItemCount(): Int {

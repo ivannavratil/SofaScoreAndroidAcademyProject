@@ -16,7 +16,6 @@ class PokemonDetailVerticalEvolutionAdapter(
     private val context: Context,
 ) : RecyclerView.Adapter<PokemonDetailVerticalEvolutionAdapter.PokemonDetailEvolutionHolder>() {
 
-
     class PokemonDetailEvolutionHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: PokemonDetailEvolutionVerticalRecyclerItemBinding =
             PokemonDetailEvolutionVerticalRecyclerItemBinding.bind(view)
@@ -49,6 +48,4 @@ class PokemonDetailVerticalEvolutionAdapter(
     override fun getItemCount(): Int {
         return data.size
     }
-
-
 }

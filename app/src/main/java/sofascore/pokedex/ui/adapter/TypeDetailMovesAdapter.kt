@@ -95,10 +95,7 @@ class TypeDetailMovesAdapter(
             4 -> if (sorted[col]) data.sortedBy { it.pp } else data.sortedByDescending { it.pp }
             else -> arrayListOf()
         }
-
         sorted[col] = !sorted[col]
         notifyDataSetChanged()
     }
-
-
 }

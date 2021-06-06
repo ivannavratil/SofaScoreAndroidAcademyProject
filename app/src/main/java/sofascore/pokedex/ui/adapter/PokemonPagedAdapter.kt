@@ -30,8 +30,6 @@ class PokemonPagedAdapter(
         init {
             view.setOnClickListener {
                 val parseInt = Integer.parseInt(binding.pokemonNum.text as String)
-                //TODO: check
-                //notifyItemChanged(parseInt-1)
                 onClick(parseInt, view.context)
             }
         }
@@ -83,6 +81,4 @@ class PokemonPagedAdapter(
             holder.bindPokemons(it, context, pagedViewModel)
         }
     }
-
-
 }

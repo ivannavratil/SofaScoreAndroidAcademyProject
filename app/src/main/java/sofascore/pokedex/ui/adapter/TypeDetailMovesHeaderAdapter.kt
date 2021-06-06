@@ -29,7 +29,6 @@ class TypeDetailMovesHeaderAdapter(
 
     }
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -60,6 +59,4 @@ class TypeDetailMovesHeaderAdapter(
     override fun getItemCount(): Int {
         return 1
     }
-
-
 }
