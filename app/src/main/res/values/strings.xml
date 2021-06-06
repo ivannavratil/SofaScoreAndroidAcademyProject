@@ -13,7 +13,7 @@
     <string name="app_name_value" translatable="false">Pokemon App</string>
     <string name="app_name_key">App Name</string>
     <string name="api_credit" translatable="false">API Credit</string>
-    <string name="api_credit_value" translatable="false">pokemons</string>
+    <string name="api_credit_value" translatable="false">pokeapi</string>
     <string name="developer_key">Developer</string>
     <string name="sofascore_android_academy">SofaScore Android Academy</string>
     <string name="class_2021">Class 2021</string>
@@ -149,4 +149,5 @@
     <string name="evolution4">4th EVOLUTION </string>
     <string name="evolution5">5th EVOLUTION </string>
     <string name="evolution6">6th EVOLUTION </string>
+    <string name="about_me_value">I am Ivan Navratil, a 4th year student at the Faculty of Electrical Engineering and Computing. The application was created as part of the SofaScore academy 2021.</string>
 </resources>
