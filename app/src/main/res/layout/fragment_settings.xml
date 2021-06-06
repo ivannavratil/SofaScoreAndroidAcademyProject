@@ -47,14 +47,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbarLayout">
 
+        <TextView
+            android:id="@+id/textView_language"
+            style="@style/Headline2DarkLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/language"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="About" />
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/language"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="16dp"
             android:entries="@array/available_languages"
             android:entryValues="@array/available_languages_short"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/textView_language" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
