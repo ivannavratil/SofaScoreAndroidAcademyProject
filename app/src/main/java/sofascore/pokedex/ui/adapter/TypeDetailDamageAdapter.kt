@@ -1,6 +1,7 @@
 package sofascore.pokedex.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.TypeDetailDamageRecyclerItemBinding
 import sofascore.pokedex.model.TypeDetailResponse.DamageRelations.Damage
+import sofascore.pokedex.other.Util
 import sofascore.pokedex.other.Util.capitalize
+import sofascore.pokedex.ui.activity.TypeDetailActivity
 import sofascore.pokedex.ui.fragment.TypeDetailDamageOverviewFragment.Power
 import java.util.*
 
@@ -31,6 +34,21 @@ class TypeDetailDamageAdapter(
     inner class DamageHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: TypeDetailDamageRecyclerItemBinding =
             TypeDetailDamageRecyclerItemBinding.bind(view)
+
+        init {
+            view.setOnClickListener {
+                onClick(Util.getId(data[adapterPosition].url), view.context)
+            }
+        }
+
+        private fun onClick(id: Int, context: Context) {
+
+            val intent = Intent(context, TypeDetailActivity()::class.java)
+
+            intent.putExtra(TypeDetailActivity.type, id)
+            context.startActivity(intent)
+
+        }
 
     }
 
