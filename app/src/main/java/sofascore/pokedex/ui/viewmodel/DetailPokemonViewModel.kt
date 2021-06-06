@@ -26,7 +26,7 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
 
     private fun getEvolution() {
 
-        val tempList: ArrayList<List<Evolution>> = ArrayList()
+        val listOfEvaluations: ArrayList<List<Evolution>> = ArrayList()
 
         viewModelScope.launch {
 
@@ -36,20 +36,54 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
             val evolutionChainID: Int = Util.getId(network.getSpecies(speciesID).evolutionChain.url)
             val evolution: PokemonEvolutionResponse = network.getEvolution(evolutionChainID);
 
+
+            val listWithFirst: ArrayList<Evolution> = ArrayList()
+
+            val id = Util.getId(evolution.chain.species.url);
+            listWithFirst.add(
+                Evolution(
+                    id,
+                    evolution.chain.species.name,
+                    network.getPokemon(id).types,
+                    null
+                )
+            );
+
+
             for (ev in evolution.chain.evolvesTo) {
-                val temp2: ArrayList<Evolution> = ArrayList()
+
+                val temp: ArrayList<Evolution> = ArrayList(listWithFirst)
 
                 val id = Util.getId(ev.species.url);
-                temp2.add(Evolution(id, ev.species.name, network.getPokemon(id).types,ev.evolutionDetails[0].minLevel));
+                temp.add(
+                    Evolution(
+                        id,
+                        ev.species.name,
+                        network.getPokemon(id).types,
+                        ev.evolutionDetails[0].minLevel
+                    )
+                );
+
+
+
 
                 for (e in ev.evolvesTo) {
-                    temp2.add(Evolution(Util.getId(e.species.url), e.species.name, network.getPokemon(id).types, e.evolutionDetails[0].minLevel));
+                    val id1 = Util.getId(e.species.url);
+                    temp.add(
+                        Evolution(
+                            id1,
+                            e.species.name,
+                            network.getPokemon(id1).types,
+                            e.evolutionDetails[0].minLevel
+                        )
+                    );
+
                 }
 
-                tempList.add(temp2)
+                listOfEvaluations.add(temp)
             }
 
-            evaluation.value = tempList
+            evaluation.value = listOfEvaluations
         }
     }
 
