@@ -1,6 +1,7 @@
 package sofascore.pokedex.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import sofascore.pokedex.databinding.PokemonDetailEvolutionHorizontalRecyclerIte
 import sofascore.pokedex.model.Evolution
 import sofascore.pokedex.model.Pokemon
 import sofascore.pokedex.other.Util.capitalize
+import sofascore.pokedex.ui.activity.DetailPokemonActivity
 import java.util.*
 
 
@@ -21,9 +23,22 @@ class PokemonDetailHorizontalEvolutionAdapter(
 ) : RecyclerView.Adapter<PokemonDetailHorizontalEvolutionAdapter.PokemonDetailEvolutionHolder>() {
 
 
-    class PokemonDetailEvolutionHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class PokemonDetailEvolutionHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: PokemonDetailEvolutionHorizontalRecyclerItemBinding =
             PokemonDetailEvolutionHorizontalRecyclerItemBinding.bind(view)
+
+        init {
+            view.setOnClickListener {
+                onClick(data[adapterPosition].id, view.context)
+            }
+        }
+
+        private fun onClick(id: Int, context: Context) {
+            val intent = Intent(context, DetailPokemonActivity()::class.java)
+            intent.putExtra(DetailPokemonActivity.pokemonById, id)
+            context.startActivity(intent)
+        }
+
     }
 
     override fun onCreateViewHolder(
@@ -68,7 +83,6 @@ class PokemonDetailHorizontalEvolutionAdapter(
 
         val evolutionAdapter = PokemonDetailEvolutionTypeAdapter(evolutionPokemon.types, context)
         typeRecycler.adapter = evolutionAdapter
-
 
     }
 
