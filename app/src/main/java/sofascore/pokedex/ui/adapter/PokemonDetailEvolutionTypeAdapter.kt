@@ -12,18 +12,18 @@ import sofascore.pokedex.R
 import sofascore.pokedex.databinding.PokemonDetailTypeRecyclerItemBinding
 import sofascore.pokedex.model.db.DetailPokemonResponse
 import sofascore.pokedex.other.Util
-import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.ui.activity.TypeDetailActivity
 import java.util.*
 
 
-class PokemonDetailTypeAdapter(
+class PokemonDetailEvolutionTypeAdapter(
     private val data: List<DetailPokemonResponse.Type>,
     private val context: Context,
-) : RecyclerView.Adapter<PokemonDetailTypeAdapter.TypeHolder>() {
+) : RecyclerView.Adapter<PokemonDetailEvolutionTypeAdapter.TypeHolder>() {
 
     inner class TypeHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding: PokemonDetailTypeRecyclerItemBinding = PokemonDetailTypeRecyclerItemBinding.bind(view)
+        val binding: PokemonDetailTypeRecyclerItemBinding =
+            PokemonDetailTypeRecyclerItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
@@ -41,20 +41,23 @@ class PokemonDetailTypeAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonDetailTypeAdapter.TypeHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): PokemonDetailEvolutionTypeAdapter.TypeHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.pokemon_detail_type_recycler_item, parent, false)
+            .inflate(R.layout.pokemon_detail_type_tiny_recycler_item, parent, false)
         return TypeHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: PokemonDetailTypeAdapter.TypeHolder,
+        holder: PokemonDetailEvolutionTypeAdapter.TypeHolder,
         position: Int
     ) {
         val type = data[position];
 
         val textView: AppCompatButton = holder.binding.type;
-        textView.text = type.type.name.capitalize()
+        textView.text = type.type.name.uppercase(Locale.getDefault())
 
         val identifier = context.resources.getIdentifier(
             "flat_pokemon_type_" + type.type.name.lowercase(Locale.getDefault()),
