@@ -38,6 +38,15 @@
     <string name="gen">Gen</string>
     <string name="move">Potez</string>
     <string name="category">Kategorija</string>
+    <string name="evolution">Evolucija</string>
+    <string name="language">Jezik</string>
+    <string name="unevolved">nerazvijen</string>
+    <string name="evolution1">1. evolucija</string>
+    <string name="evolution2">2. evolucija</string>
+    <string name="evolution3">3. evolucija</string>
+    <string name="evolution4">4. evolucija</string>
+    <string name="evolution5">5. evolucija</string>
+    <string name="evolution6">6. evolucija</string>
 
 
 </resources>

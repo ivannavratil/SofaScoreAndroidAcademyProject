@@ -48,7 +48,7 @@
             android:id="@+id/rows"
             layout="@layout/type_detail_damage_rows"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/types" />
