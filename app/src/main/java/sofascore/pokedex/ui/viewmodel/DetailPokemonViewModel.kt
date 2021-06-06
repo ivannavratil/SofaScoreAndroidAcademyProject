@@ -6,10 +6,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import sofascore.pokedex.model.Evolution
 import sofascore.pokedex.model.Pokemon
+import sofascore.pokedex.model.PokemonEvolutionResponse
 import sofascore.pokedex.model.db.AppDatabase
 import sofascore.pokedex.model.db.DetailPokemonResponse
 import sofascore.pokedex.model.network.Network
+import sofascore.pokedex.other.Util
 
 class DetailPokemonViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -17,15 +20,48 @@ class DetailPokemonViewModel(application: Application) : AndroidViewModel(applic
 
     var favourite: MutableLiveData<Boolean> = MutableLiveData()
 
+    var evaluation: MutableLiveData<ArrayList<List<Evolution>>> = MutableLiveData()
+
     private val network = Network().service
 
-    fun getDetailedTypeAndMoveInfo(id: Int, context: Context) {
+    private fun getEvolution() {
+
+        val tempList: ArrayList<List<Evolution>> = ArrayList()
+
+        viewModelScope.launch {
+
+            val url = detailPokemon.value!!.species.url;
+
+            val speciesID = Util.getId(url);
+            val evolutionChainID: Int = Util.getId(network.getSpecies(speciesID).evolutionChain.url)
+            val evolution: PokemonEvolutionResponse = network.getEvolution(evolutionChainID);
+
+            for (ev in evolution.chain.evolvesTo) {
+                val temp2: ArrayList<Evolution> = ArrayList()
+
+                val id = Util.getId(ev.species.url);
+                temp2.add(Evolution(id, ev.species.name, network.getPokemon(id).types,ev.evolutionDetails[0].minLevel));
+
+                for (e in ev.evolvesTo) {
+                    temp2.add(Evolution(Util.getId(e.species.url), e.species.name, network.getPokemon(id).types, e.evolutionDetails[0].minLevel));
+                }
+
+                tempList.add(temp2)
+            }
+
+            evaluation.value = tempList
+        }
+    }
+
+    fun getInfo(id: Int, context: Context) {
         viewModelScope.launch {
             val response = network.getPokemon(id)
             detailPokemon.value = response
 
             favourite.value =
                 AppDatabase.getDatabase(context).PokemonDao().isPokemonFavourite(id) == true
+
+            getEvolution()
         }
     }
 

@@ -16,6 +16,7 @@ import sofascore.pokedex.other.Util.capitalize
 import sofascore.pokedex.ui.adapter.PokemonDetailAbilitiesAdapter
 import sofascore.pokedex.ui.adapter.PokemonDetailStatsAdapter
 import sofascore.pokedex.ui.adapter.PokemonDetailTypeAdapter
+import sofascore.pokedex.ui.adapter.PokemonDetailVerticalEvolutionAdapter
 import sofascore.pokedex.ui.viewmodel.DetailPokemonViewModel
 
 
@@ -28,7 +29,7 @@ class DetailPokemonActivity : AppCompatActivity() {
 
 
     companion object {
-        const val pokemonById = "BY_ID";
+        const val pokemonById = "BY_ID"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,12 +39,14 @@ class DetailPokemonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        detailPokemonViewModel.getDetailedTypeAndMoveInfo(
-            intent.getIntExtra(pokemonById, -1),
+        val id = intent.getIntExtra(pokemonById, -1)
+
+        detailPokemonViewModel.getInfo(
+            id,
             applicationContext
         )
 
-        val (typeRecycler, statsRecycler, abilitiesRecycler) = setupRecyclerViews()
+        val (typeRecycler, statsRecycler, abilitiesRecycler, evolutionRecycler) = setupRecyclerViews()
 
 
         detailPokemonViewModel.detailPokemon.observe(this, {
@@ -61,6 +64,12 @@ class DetailPokemonActivity : AppCompatActivity() {
             abilitiesRecycler.adapter = abilitiesAdapter
         })
 
+        detailPokemonViewModel.evaluation.observe(this, {
+            val evolutionAdapter = PokemonDetailVerticalEvolutionAdapter(it, this)
+            evolutionRecycler.adapter = evolutionAdapter
+
+        })
+
         detailPokemonViewModel.favourite.observe(this, {
             binding.pokemonFavorite.setImageResource(if (detailPokemonViewModel.favourite.value == true) R.drawable.ic_star_1 else R.drawable.ic_star_0)
         })
@@ -75,7 +84,7 @@ class DetailPokemonActivity : AppCompatActivity() {
 
     }
 
-    private fun setupRecyclerViews(): Triple<RecyclerView, RecyclerView, RecyclerView> {
+    private fun setupRecyclerViews(): List<RecyclerView> {
         val typeRecycler = binding.pokemonDetails.pokemonMain.typeRecycler
         typeRecycler.layoutManager = GridLayoutManager(
             this,
@@ -88,7 +97,13 @@ class DetailPokemonActivity : AppCompatActivity() {
         val abilitiesRecycler = binding.pokemonDetails.abilitiesRecycler
         abilitiesRecycler.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        return Triple(typeRecycler, statsRecycler, abilitiesRecycler)
+
+        val evolutionRecycler = binding.pokemonDetails.includedRecycler.verticalRecycler
+        evolutionRecycler.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+
+        return listOf(typeRecycler, statsRecycler, abilitiesRecycler, evolutionRecycler)
     }
 
     private fun setupUI(detailPokemon: DetailPokemonResponse) {
@@ -110,7 +125,7 @@ class DetailPokemonActivity : AppCompatActivity() {
     }
 
     private fun setupWeightAndHeight(detailPokemon: DetailPokemonResponse) {
-        val pokemonHeightWeight = binding.pokemonDetails.pokemonHeightWeight;
+        val pokemonHeightWeight = binding.pokemonDetails.pokemonHeightWeight
         pokemonHeightWeight.includedHeight.image.load(R.drawable.ic_height)
         pokemonHeightWeight.includedHeight.attKey.text = resources.getString(R.string.height)
         pokemonHeightWeight.includedHeight.attVal.text =
@@ -124,7 +139,6 @@ class DetailPokemonActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
 
-        //TODO: check flickering
         detailPokemonViewModel.refreshFavoriteStatus(
             detailPokemonViewModel.detailPokemon.value!!.id,
             this
