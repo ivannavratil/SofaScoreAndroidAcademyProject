@@ -140,4 +140,6 @@
     <string name="move">move</string>
     <string name="category">category</string>
     <string name="pp">pp</string>
+    <string name="evolution">Evolution</string>
+    <string name="language">Language</string>
 </resources>
