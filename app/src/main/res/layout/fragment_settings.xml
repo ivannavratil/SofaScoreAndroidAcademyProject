@@ -6,14 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.SettingsFragment">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -47,15 +45,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbarLayout">
 
+        <TextView
+            android:id="@+id/text_view_language"
+            style="@style/Headline2DarkLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="About" />
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/language"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="16dp"
             android:entries="@array/available_languages"
             android:entryValues="@array/available_languages_short"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@id/text_view_language" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_about"
@@ -81,6 +87,7 @@
                 style="@style/BodyDarkLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis."
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
