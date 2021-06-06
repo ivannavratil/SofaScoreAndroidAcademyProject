@@ -13,10 +13,10 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import sofascore.pokedex.other.LanguageHelper
-import sofascore.pokedex.other.PopUpClass
 import sofascore.pokedex.R
 import sofascore.pokedex.databinding.FragmentSettingsBinding
+import sofascore.pokedex.other.LanguageHelper
+import sofascore.pokedex.other.PopUpClass
 import sofascore.pokedex.ui.activity.AboutActivity
 import sofascore.pokedex.ui.activity.MainActivity
 import sofascore.pokedex.ui.viewmodel.FavoriteViewModel
@@ -90,9 +90,7 @@ class SettingsFragment : Fragment() {
                 }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                //TODO("Not yet implemented")
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
         return binding.root
     }

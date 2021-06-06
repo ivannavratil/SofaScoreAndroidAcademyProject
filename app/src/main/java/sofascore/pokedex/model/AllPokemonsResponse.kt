@@ -18,7 +18,6 @@ data class PokemonNamePhoto(
 
 
 ) {
-    //TODO: fix
     override fun toString(): String {
         return name.capitalize()
     }

@@ -104,12 +104,4 @@ class SearchFragment : Fragment() {
             pagedAdapter.submitList(it)
         })
     }
-
-
-    override fun onResume() {
-        super.onResume()
-        //TODO: fix flickering
-        //pagedPokemonsViewModel.pagingPokemonsList.value?.dataSource?.invalidate()
-    }
-
 }
