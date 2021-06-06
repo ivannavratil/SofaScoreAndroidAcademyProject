@@ -142,4 +142,11 @@
     <string name="pp">pp</string>
     <string name="evolution">Evolution</string>
     <string name="language">Language</string>
+    <string name="unevolved">unevolved</string>
+    <string name="evolution1">1st EVOLUTION </string>
+    <string name="evolution2">2nd EVOLUTION </string>
+    <string name="evolution3">3rd EVOLUTION </string>
+    <string name="evolution4">4th EVOLUTION </string>
+    <string name="evolution5">5th EVOLUTION </string>
+    <string name="evolution6">6th EVOLUTION </string>
 </resources>

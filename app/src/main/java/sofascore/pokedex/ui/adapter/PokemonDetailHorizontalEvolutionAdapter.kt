@@ -48,14 +48,20 @@ class PokemonDetailHorizontalEvolutionAdapter(
         holder.binding.level.visibility = if (b) View.GONE else View.VISIBLE
         holder.binding.arrowAndNum.visibility = if (position == 0) View.GONE else View.VISIBLE
 
-
         holder.binding.image.load(Pokemon.getAvatarUrl(evolutionPokemon.id))
         holder.binding.name.text = evolutionPokemon.name.capitalize()
-        holder.binding.evolutionLabel.text =
-            (position + 1).toString() + context.getString(R.string.evolution).toUpperCase(
-                Locale.getDefault()
+        holder.binding.evolutionLabel.text = when (position) {
+            0 -> context.resources.getString(R.string.unevolved).toUpperCase(Locale.getDefault())
+            else -> context.resources.getString(
+                context.resources.getIdentifier(
+                    "evolution$position",
+                    "string",
+                    context.packageName
+                )
             )
 
+
+        }
 
         val typeRecycler = holder.binding.pokemonDetailEvolutionHorizontalTypeRecyclerItem
         typeRecycler.layoutManager = GridLayoutManager(context, if (data.size == 1) 1 else 2)
